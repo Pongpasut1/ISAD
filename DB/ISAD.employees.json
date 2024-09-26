@@ -1,0 +1,18 @@
+[{
+  "_id": 0,
+  "username": "Admin",
+  "password": "password",
+  "_class": "com.example.demo.Model.Employees"
+},
+{
+  "_id": 1,
+  "username": "emp1",
+  "password": "password",
+  "_class": "com.example.demo.Model.Employees"
+},
+{
+  "_id": 2,
+  "username": "emp2",
+  "password": "password",
+  "_class": "com.example.demo.Model.Employees"
+}]
