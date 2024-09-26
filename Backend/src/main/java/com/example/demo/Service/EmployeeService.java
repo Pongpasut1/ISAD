@@ -24,12 +24,29 @@ public class EmployeeService {
         employeesRepo.save(employee);
     }
 
-    public Employees registerUser(String username, String password) {
+    public Employees registerUser(String username, String password, String role) {
         Employees user = new Employees();
         user.setUsername(username);
         user.setPassword(password);
+        user.setRole(role);
         user.setId(getNextSequenceId("employeeId"));  // Get the next ID
         return employeesRepo.save(user);
+    }
+
+    public Employees updateEmployee(Employees employee) {
+        // ตรวจสอบว่าพนักงานมีอยู่หรือไม่
+        Employees existingEmployee = employeesRepo.findById(employee.getId()).orElse(null);
+        if (existingEmployee != null) {
+            // อัปเดต
+            existingEmployee.setUsername(employee.getUsername());
+            existingEmployee.setPassword(employee.getPassword());
+            existingEmployee.setRole(employee.getRole());
+            // บันทึกพนักงานที่ถูกอัปเดต
+            return employeesRepo.save(existingEmployee);
+        } else {
+            // หากไม่พบพนักงาน ให้จัดการตามที่เหมาะสม
+            throw new RuntimeException("Employee not found with id " + employee.getId());
+        }
     }
 
     public Employees findUserByUsername(String username) {

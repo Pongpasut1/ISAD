@@ -22,9 +22,14 @@ public class MainController {
         employeesRepo.save(employees);
     }
 
+    @PostMapping("/updateEmployee")
+    public Employees updateEmployee(@RequestBody Employees employee) {
+        return employeeService.updateEmployee(employee);
+    }
+
     @PostMapping("/register")
     public Employees registerUser(@RequestBody Employees user) {
-        return employeeService.registerUser(user.getUsername(), user.getPassword()); // ใช้ instance ที่ inject
+        return employeeService.registerUser(user.getUsername(), user.getPassword(), user.getRole()); // ใช้ instance ที่ inject
     }
 
     @PostMapping("/login")

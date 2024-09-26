@@ -18,6 +18,10 @@ public class Employees {
 
     private String password;
 
+    private String Role;
+
+
+    //getter
     public Integer getId() {
         return id;
     }
@@ -30,6 +34,11 @@ public class Employees {
         return password;
     }
 
+    public String getRole() {
+        return Role;
+    }
+
+    //setter
     public void setId(Integer id) {
         this.id = id;
     }
@@ -40,5 +49,9 @@ public class Employees {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setRole(String role) {
+        Role = role;
     }
 }
