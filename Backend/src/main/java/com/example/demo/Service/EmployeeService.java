@@ -50,8 +50,18 @@ public class EmployeeService {
     }
 
     public Employees findUserByUsername(String username) {
-        return employeesRepo.findByUsername(username);
+        Employees user = employeesRepo.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found with username: " + username);
+        }
+        return user;
     }
+    public class UsernameNotFoundException extends RuntimeException {
+        public UsernameNotFoundException(String message) {
+            super(message);
+        }
+    }
+
 
     // Method to get the next sequence ID
     private synchronized int getNextSequenceId(String sequenceName) {
