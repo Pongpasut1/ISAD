@@ -27,7 +27,7 @@ public class Employees {
 
     private String surname;
 
-    private LocalDate DOB;
+    private String DOB;
 
     private String email;
 
@@ -63,7 +63,7 @@ public class Employees {
         return surname;
     }
 
-    public LocalDate getDOB() {
+    public String getDOB() {
         return DOB;
     }
 
@@ -106,7 +106,7 @@ public class Employees {
         this.surname = surname;
     }
 
-    public void setDOB(LocalDate DOB){
+    public void setDOB(String DOB){
         this.DOB = DOB;
     }
 
