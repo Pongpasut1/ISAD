@@ -41,6 +41,12 @@ public class EmployeeService {
             existingEmployee.setUsername(employee.getUsername());
             existingEmployee.setPassword(employee.getPassword());
             existingEmployee.setRole(employee.getRole());
+            existingEmployee.setEmp_id(employee.getEmp_id());
+            existingEmployee.setName(employee.getName());
+            existingEmployee.setSurname(employee.getSurname());
+            existingEmployee.setDOB(employee.getDOB());
+            existingEmployee.setEmail(employee.getEmail());
+            existingEmployee.setPhone_number(employee.getPhone_number());
             // บันทึกพนักงานที่ถูกอัปเดต
             return employeesRepo.save(existingEmployee);
         } else {

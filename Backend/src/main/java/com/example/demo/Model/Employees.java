@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import java.time.LocalDate;
 
 @Document(collection = "employees")
 @Data
@@ -19,6 +20,18 @@ public class Employees {
     private String password;
 
     private String Role;
+
+    private String emp_id;
+
+    private String name;
+
+    private String surname;
+
+    private LocalDate DOB;
+
+    private String email;
+
+    private String phone_number;
 
 
     //getter
@@ -38,6 +51,31 @@ public class Employees {
         return Role;
     }
 
+    public String getEmp_id() {
+        return emp_id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public LocalDate getDOB() {
+        return DOB;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+
     //setter
     public void setId(Integer id) {
         this.id = id;
@@ -53,5 +91,30 @@ public class Employees {
 
     public void setRole(String role) {
         Role = role;
+    }
+
+    public void setEmp_id(String emp_id){
+        this.emp_id = emp_id;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+
+    public void setSurname(String surname){
+        this.surname = surname;
+    }
+
+    public void setDOB(LocalDate DOB){
+        this.DOB = DOB;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public void setPhone_number(String phone_number){
+        this.phone_number = phone_number;
     }
 }
