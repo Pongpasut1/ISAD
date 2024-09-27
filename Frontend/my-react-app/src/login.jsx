@@ -4,11 +4,30 @@ import './Login.css'; // For CSS styling
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Username:", username);
-    console.log("Password:", password);
+
+    try {
+      const response = await fetch('http://localhost:8081/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log(data.message);
+        setErrorMessage('');
+      } else {
+        setErrorMessage(data.error);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setErrorMessage('Error Try again!');
+    }
   };
 
   return (
@@ -16,6 +35,7 @@ const Login = () => {
       <form onSubmit={handleSubmit} className="login-form">
         <div className="avatar-circle"></div>
         <h2>Please login</h2>
+        {errorMessage && <p className="error">{errorMessage}</p>}
         <input
           type="text"
           placeholder="username"
@@ -35,4 +55,3 @@ const Login = () => {
 };
 
 export default Login;
-

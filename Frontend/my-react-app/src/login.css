@@ -75,3 +75,7 @@ button:hover {
     background-color: #0504aa;
 }
 
+.error {
+  color: red;
+  margin-top: 10px;
+}
