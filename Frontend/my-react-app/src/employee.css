@@ -1,0 +1,61 @@
+/* Container styling */
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Header section */
+  .header {
+    width: 100%;
+    background-color: #0504aa; /* สีพื้นหลัง */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  /* Title styling */
+  .header h1 {
+    color: #ffffff;
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  /* Circle styling */
+  .circle {
+    width: 40px;
+    height: 40px;
+    background-color: #c4c4c4;
+    border-radius: 50%;
+  }
+  
+  /* Button container */
+  .buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 20px;
+  }
+  
+  /* Individual button styling */
+  .button {
+    width: 150px;
+    height: 80px;
+    background: linear-gradient(to bottom, #0b2e8b, #000000);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+  }
+  
+  .button:hover {
+    transform: scale(1.05);
+  }
+  

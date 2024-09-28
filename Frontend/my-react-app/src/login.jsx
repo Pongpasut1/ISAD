@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.css'; // For CSS styling
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +20,7 @@ const Login = () => {
 
       const data = await response.json();
 
+      //ตรวจ Username
       if (response.ok) {
         console.log(data.message);
         setErrorMessage('');
@@ -27,6 +30,15 @@ const Login = () => {
     } catch (error) {
       console.error('Error:', error);
       setErrorMessage('Error Try again!');
+    }
+
+    // ** ยังไม่เสร็จ -> ตัวนำหน้า **
+  if (username.toLowerCase().startsWith('em')){
+      navigate('/employee'); // นำทางไปยังหน้าสำหรับพนักงาน
+    } else if (username.toLowerCase().startsWith('ad')) {
+      navigate('/hr'); // นำทางไปยังหน้าhr
+    } else if (username.toLocaleLowerCase().startsWith('ch')){
+      navigate('/chef'); //นำทางไปยังหน้าหัวหน้า
     }
   };
 
