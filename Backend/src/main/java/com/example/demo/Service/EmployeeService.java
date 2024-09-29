@@ -47,6 +47,7 @@ public class EmployeeService {
             existingEmployee.setDOB(employee.getDOB());
             existingEmployee.setEmail(employee.getEmail());
             existingEmployee.setPhone_number(employee.getPhone_number());
+            existingEmployee.setDepartment(employee.getDepartment());
             // บันทึกพนักงานที่ถูกอัปเดต
             return employeesRepo.save(existingEmployee);
         } else {

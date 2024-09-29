@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "attendance")
+@Document(collection = "attendances")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,7 +16,7 @@ public class Attendance {
 
     private String emp_id;
 
-    private int sick_live; //ลาป่วย(ครั้ง)
+    private int sick_leave; //ลาป่วย(ครั้ง)
 
     private int personal_leave; //ลากิจ(ครั้ง)
 
@@ -38,8 +38,8 @@ public class Attendance {
         return emp_id;
     }
 
-    public int getSick_live() {
-        return sick_live;
+    public int getSick_leave() {
+        return sick_leave;
     }
 
     public int getPersonal_leave() {
@@ -73,8 +73,8 @@ public class Attendance {
         this.emp_id = emp_id;
     }
 
-    public void setSick_live(int sick_live) {
-        this.sick_live = sick_live;
+    public void setSick_leave(int sick_live) {
+        this.sick_leave = sick_live;
     }
 
     public void setPersonal_leave(int personal_leave) {

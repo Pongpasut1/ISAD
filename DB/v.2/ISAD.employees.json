@@ -1,0 +1,32 @@
+[{
+  "_id": 0,
+  "username": "Admin",
+  "password": "password",
+  "_class": "com.example.demo.Model.Employees"
+},
+{
+  "_id": 1,
+  "username": "emp1",
+  "password": "password",
+  "_class": "com.example.demo.Model.Employees"
+},
+{
+  "_id": 2,
+  "username": "emp2",
+  "password": "password",
+  "_class": "com.example.demo.Model.Employees"
+},
+{
+  "_id": 5,
+  "username": "emp3",
+  "password": "wordpass",
+  "Role": "employee",
+  "emp_id": "29092024",
+  "name": "James",
+  "surname": "Johnson",
+  "DOB": "2001-09-29",
+  "email": "jamesj@gmail.com",
+  "phone_number": "0811111010",
+  "department": "sales",
+  "_class": "com.example.demo.Model.Employees"
+}]
