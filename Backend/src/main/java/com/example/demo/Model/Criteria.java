@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import java.time.LocalDate;
 
 @Document(collection = "criterias")
 @Data
@@ -21,7 +20,15 @@ public class Criteria {
 
     private Article[] articles;
 
-    private String department;
+    private String department; //ของแผนกไหน
+
+    private String role; //ของตำแหน่งไหน
+
+    private int KPI_weight; //ค่าน้ำหนักคะแนนKPI(0%-100%)
+
+    private int ability_weight; //ค่าน้ำหนักคะแนนความสามารถ
+
+    private int attendance_weight; //ค่าน้ำหนักคะแนนขาด ลา มาสาย
 
     //getter
     public Integer getId(){
@@ -44,6 +51,22 @@ public class Criteria {
         return department;
     }
 
+    public int getKPI_weight() {
+        return KPI_weight;
+    }
+
+    public int getAbility_weight() {
+        return ability_weight;
+    }
+
+    public int getAttendance_weight() {
+        return attendance_weight;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
     //setter
     public void setId(Integer id){
         this.id = id;
@@ -63,5 +86,21 @@ public class Criteria {
 
     public void setDepartment(String department){
         this.department = department;
+    }
+
+    public void setKPI_weight(int KPI_weight) {
+        this.KPI_weight = KPI_weight;
+    }
+
+    public void setAttendance_weight(int attendance_weight) {
+        this.attendance_weight = attendance_weight;
+    }
+
+    public void setAbility_weight(int ability_weight) {
+        this.ability_weight = ability_weight;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
