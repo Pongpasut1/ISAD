@@ -21,6 +21,8 @@ public class Criteria {
 
     private Article[] articles;
 
+    private String department;
+
     //getter
     public Integer getId(){
         return id;
@@ -38,6 +40,10 @@ public class Criteria {
         return articles;
     }
 
+    public String getDepartment(){
+        return department;
+    }
+
     //setter
     public void setId(Integer id){
         this.id = id;
@@ -53,5 +59,9 @@ public class Criteria {
 
     public void setArticles(Article[] articles){
         this.articles = articles;
+    }
+
+    public void setDepartment(String department){
+        this.department = department;
     }
 }

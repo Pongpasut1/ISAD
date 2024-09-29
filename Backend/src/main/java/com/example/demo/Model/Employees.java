@@ -33,6 +33,8 @@ public class Employees {
 
     private String phone_number;
 
+    private String department;
+
 
     //getter
     public Integer getId() {
@@ -73,6 +75,10 @@ public class Employees {
 
     public String getPhone_number() {
         return phone_number;
+    }
+
+    public String getDepartment(){
+        return department;
     }
 
 
@@ -116,5 +122,9 @@ public class Employees {
 
     public void setPhone_number(String phone_number){
         this.phone_number = phone_number;
+    }
+
+    public void setDepartment(String department){
+        this.department = department;
     }
 }

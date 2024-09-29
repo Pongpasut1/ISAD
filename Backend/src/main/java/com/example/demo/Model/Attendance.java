@@ -16,11 +16,18 @@ public class Attendance {
 
     private String emp_id;
 
-    private String leave_date;
+    private int sick_live; //ลาป่วย(ครั้ง)
 
-    private String type;
+    private int personal_leave; //ลากิจ(ครั้ง)
 
-    private int duration;
+    private int annual_leave; //ลาพักร้อน(ครั้ง)
+
+    private int other_leave; //ลาอื่นๆ(ครั้ง)
+
+    private int late_times; //จำนวนครั้งสาย
+
+    private int late_min; //สายรวมกี่นาที
+
 
     //getter
     public Integer getId() {
@@ -31,16 +38,28 @@ public class Attendance {
         return emp_id;
     }
 
-    public String getLeave_date() {
-        return leave_date;
+    public int getSick_live() {
+        return sick_live;
     }
 
-    public String getType(){
-        return type;
+    public int getPersonal_leave() {
+        return personal_leave;
     }
 
-    public int getDuration(){
-        return duration;
+    public int getAnnual_leave() {
+        return annual_leave;
+    }
+
+    public int getOther_leave() {
+        return other_leave;
+    }
+
+    public int getLate_times() {
+        return late_times;
+    }
+
+    public int getLate_min() {
+        return late_min;
     }
 
     //setter
@@ -50,19 +69,31 @@ public class Attendance {
         this.id = id;
     }
 
-     public void setEmp_id(String emp_id){
+    public void setEmp_id(String emp_id) {
         this.emp_id = emp_id;
-     }
-
-    public void setLeave_date(String leave_date) {
-        this.leave_date = leave_date;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setSick_live(int sick_live) {
+        this.sick_live = sick_live;
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public void setPersonal_leave(int personal_leave) {
+        this.personal_leave = personal_leave;
+    }
+
+    public void setAnnual_leave(int annual_leave) {
+        this.annual_leave = annual_leave;
+    }
+
+    public void setOther_leave(int other_leave) {
+        this.other_leave = other_leave;
+    }
+
+    public void setLate_times(int late_times) {
+        this.late_times = late_times;
+    }
+
+    public void setLate_min(int late_min) {
+        this.late_min = late_min;
     }
 }

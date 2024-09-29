@@ -16,11 +16,13 @@ public class Article {
 
     private String article_id;
 
-    private String description;
+    private String description; //คำอธิบายคำถาม
 
-    private float weight;
+    private float weight; //ค่าน้ำหนักคะแนน(0%-100%)
 
-    private int score;
+    private int score; //คะแนนเต็มของข้อนี้
+
+    private String type; //KPI score, คะแนนความสามารถ, other
 
     //getter
     public Integer getId(){
@@ -43,6 +45,10 @@ public class Article {
         return score;
     }
 
+    public String getType(){
+        return type;
+    }
+
     //setter
     public void setId(Integer id){
         this.id = id;
@@ -62,5 +68,9 @@ public class Article {
 
     public void setScore(int score){
         this.score = score;
+    }
+
+    public void setType(String type){
+        this.type = type;
     }
 }
