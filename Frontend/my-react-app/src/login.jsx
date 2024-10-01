@@ -24,21 +24,19 @@ const Login = () => {
       if (response.ok) {
         console.log(data.message);
         setErrorMessage('');
+        if (username.toLowerCase().startsWith('em')){
+          navigate('/employee'); // นำทางไปยังหน้าสำหรับพนักงาน
+        } else if (username.toLowerCase().startsWith('ad')) {
+          navigate('/hr'); // นำทางไปยังหน้าhr
+        } else if (username.toLocaleLowerCase().startsWith('ch')){
+          navigate('/chef'); //นำทางไปยังหน้าหัวหน้า
+        }
       } else {
         setErrorMessage(data.error);
       }
     } catch (error) {
       console.error('Error:', error);
       setErrorMessage('Error Try again!');
-    }
-
-    // ** ยังไม่เสร็จ -> ตัวนำหน้า **
-  if (username.toLowerCase().startsWith('em')){
-      navigate('/employee'); // นำทางไปยังหน้าสำหรับพนักงาน
-    } else if (username.toLowerCase().startsWith('ad')) {
-      navigate('/hr'); // นำทางไปยังหน้าhr
-    } else if (username.toLocaleLowerCase().startsWith('ch')){
-      navigate('/chef'); //นำทางไปยังหน้าหัวหน้า
     }
   };
 
