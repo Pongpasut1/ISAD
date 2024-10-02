@@ -29,7 +29,7 @@ const Login = () => {
         } else if (username.toLowerCase().startsWith('ad')) {
           navigate('/hr'); // นำทางไปยังหน้าhr
         } else if (username.toLocaleLowerCase().startsWith('ch')){
-          navigate('/chef'); //นำทางไปยังหน้าหัวหน้า
+          navigate('/chief'); //นำทางไปยังหน้าหัวหน้า
         }
       } else {
         setErrorMessage(data.error);

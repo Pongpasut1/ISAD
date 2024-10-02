@@ -2,14 +2,15 @@ import React from 'react';
 import './people.css'
 
 // ** ยังไม่เสร็จ **
-const EmployeePage = () => {
+const ChiefPage = () => {
   return (
     <div className="container">
       <header className="header">
-        <h1>ข้าคือผู้หลงทางในความมืดมิด</h1>
+        <h1>ผู้กำชะตากรรมของเหล่าทาส</h1>
         <div className="circle"> </div>
       </header>
       <div className="buttons-container">
+        <button className="button">ข้อมูลพนักงาน</button>
         <button className="button">ประเมิน</button>
         <button className="button">เงินเดือนของฉัน</button>
       </div>
@@ -17,4 +18,4 @@ const EmployeePage = () => {
   );
 };
 
-export default EmployeePage;
+export default ChiefPage;
