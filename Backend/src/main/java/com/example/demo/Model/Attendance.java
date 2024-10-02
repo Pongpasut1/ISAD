@@ -5,6 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.bson.types.ObjectId;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Document(collection = "attendances")
 @Data
@@ -12,88 +16,99 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 public class Attendance {
     @Id
-    private Integer id;
+    private ObjectId id;
 
-    private String emp_id;
+    private String employeeId;
 
-    private int sick_leave; //ลาป่วย(ครั้ง)
+    private LocalDate date; // วันที่
 
-    private int personal_leave; //ลากิจ(ครั้ง)
+    private LocalDateTime checkInTime; // เวลาเข้างาน
 
-    private int annual_leave; //ลาพักร้อน(ครั้ง)
+    private LocalDateTime checkOutTime; // เวลาออกงาน
 
-    private int other_leave; //ลาอื่นๆ(ครั้ง)
+    private boolean isLate; // สถานะว่ามาสายหรือไม่
 
-    private int late_times; //จำนวนครั้งสาย
+    private int lateMinutes; // จำนวนเวลาที่มาสาย (นาที)
 
-    private int late_min; //สายรวมกี่นาที
+    private boolean isLeave; // สถานะว่าลาหรือไม่
 
+    private String leaveReason; // สาเหตุการลา (ป่วย, ลากิจ, ลาพักร้อน)
 
     //getter
-    public Integer getId() {
+
+    public ObjectId getId() {
         return id;
     }
 
-    public String getEmp_id() {
-        return emp_id;
+    public String getEmployeeId() {
+        return employeeId;
     }
 
-    public int getSick_leave() {
-        return sick_leave;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public int getPersonal_leave() {
-        return personal_leave;
+    public LocalDateTime getCheckInTime() {
+        return checkInTime;
     }
 
-    public int getAnnual_leave() {
-        return annual_leave;
+    public LocalDateTime getCheckOutTime() {
+        return checkOutTime;
     }
 
-    public int getOther_leave() {
-        return other_leave;
+    public boolean getIsLate() {
+        return isLate;
     }
 
-    public int getLate_times() {
-        return late_times;
+    public int getLateMinutes() {
+        return lateMinutes;
     }
 
-    public int getLate_min() {
-        return late_min;
+    public boolean getIsLeave() {
+        return isLeave;
     }
+
+    public String getLeaveReason() {
+        return leaveReason;
+    }
+
 
     //setter
 
 
-    public void setId(Integer id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
-    public void setEmp_id(String emp_id) {
-        this.emp_id = emp_id;
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
     }
 
-    public void setSick_leave(int sick_live) {
-        this.sick_leave = sick_live;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
-    public void setPersonal_leave(int personal_leave) {
-        this.personal_leave = personal_leave;
+    public void setCheckInTime(LocalDateTime checkInTime) {
+        this.checkInTime = checkInTime;
     }
 
-    public void setAnnual_leave(int annual_leave) {
-        this.annual_leave = annual_leave;
+    public void setCheckOutTime(LocalDateTime checkOutTime) {
+        this.checkOutTime = checkOutTime;
     }
 
-    public void setOther_leave(int other_leave) {
-        this.other_leave = other_leave;
+    public void setIsLate(boolean late) {
+        isLate = late;
     }
 
-    public void setLate_times(int late_times) {
-        this.late_times = late_times;
+    public void setLateMinutes(int lateMinutes) {
+        this.lateMinutes = lateMinutes;
     }
 
-    public void setLate_min(int late_min) {
-        this.late_min = late_min;
+    public void setIsLeave(boolean leave) {
+        isLeave = leave;
+    }
+
+    public void setLeaveReason(String leaveReason) {
+        this.leaveReason = leaveReason;
     }
 }

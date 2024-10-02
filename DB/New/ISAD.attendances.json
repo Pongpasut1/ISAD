@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "66fd680d3284f6284ee67151"
+  },
+  "employeeId": "12345",
+  "date": {
+    "$date": "2023-09-30T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-01T01:30:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-01T10:30:00.000Z"
+  },
+  "isLate": true,
+  "lateMinutes": 15,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.Model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "66fd6bdb23ee5e161c688284"
+  },
+  "employeeId": "29102024",
+  "date": {
+    "$date": "2023-09-30T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-01T01:00:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-01T10:00:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.Model.Attendance"
+}]
