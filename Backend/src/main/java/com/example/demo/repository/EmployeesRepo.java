@@ -1,6 +1,6 @@
-package com.example.demo.Repository;
+package com.example.demo.repository;
 
-import com.example.demo.Model.Employees;
+import com.example.demo.model.Employees;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface EmployeesRepo extends MongoRepository<Employees, Integer> {

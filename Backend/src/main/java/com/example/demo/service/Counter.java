@@ -1,4 +1,4 @@
-package com.example.demo.Service;
+package com.example.demo.service;
 
 // Counter model class
 import org.springframework.data.annotation.Id;

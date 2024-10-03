@@ -1,9 +1,8 @@
-package com.example.demo.Model;
+package com.example.demo.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.aggregation.StringOperators;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "salaryDetails")

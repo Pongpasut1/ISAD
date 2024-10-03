@@ -1,12 +1,11 @@
-package com.example.demo.Controller;
+package com.example.demo.controller;
 
-import com.example.demo.Model.Attendance;
-import com.example.demo.Service.AttendanceService;
+import com.example.demo.model.Attendance;
+import com.example.demo.service.AttendanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController

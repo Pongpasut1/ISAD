@@ -1,20 +1,21 @@
-package com.example.demo.Model;
+package com.example.demo.model;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "evaResults")
+@Document(collection = "selfEvaResults")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EvaluationResults {
 
+public class SelfEvaluationResults {
     @Id
     private Integer id;
 
-    private String resultID;
+    private String self_resultID;
 
     private String emp_id;
 
@@ -35,8 +36,8 @@ public class EvaluationResults {
         return id;
     }
 
-    public String getResultID() {
-        return resultID;
+    public String getSelf_resultID() {
+        return self_resultID;
     }
 
     public String getEmp_id() {
@@ -77,8 +78,8 @@ public class EvaluationResults {
         this.emp_id = emp_id;
     }
 
-    public void setResultID(String resultID) {
-        this.resultID = resultID;
+    public void setSelf_resultID(String resultID) {
+        this.self_resultID = resultID;
     }
 
     public void setEvaluation_cri(Criteria evaluation_cri) {

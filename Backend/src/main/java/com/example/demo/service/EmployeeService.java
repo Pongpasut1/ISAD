@@ -1,7 +1,7 @@
-package com.example.demo.Service;
+package com.example.demo.service;
 
-import com.example.demo.Model.Employees;
-import com.example.demo.Repository.EmployeesRepo;
+import com.example.demo.model.Employees;
+import com.example.demo.repository.EmployeesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoTemplate;
