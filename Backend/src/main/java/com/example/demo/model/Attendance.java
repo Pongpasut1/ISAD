@@ -72,6 +72,9 @@ public class Attendance {
         return leaveReason;
     }
 
+    public boolean isLate() { return isLate; }
+
+    public boolean isLeave() { return isLeave; }
 
     //setter
 
@@ -110,5 +113,13 @@ public class Attendance {
 
     public void setLeaveReason(String leaveReason) {
         this.leaveReason = leaveReason;
+    }
+
+    public void setLate(boolean late) {
+        isLate = late;
+    }
+
+    public void setLeave(boolean leave) {
+        isLeave = leave;
     }
 }
