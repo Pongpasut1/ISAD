@@ -8,6 +8,8 @@ import org.bson.types.ObjectId;
 
 
 public interface AttendanceRepo extends MongoRepository<Attendance, ObjectId> {
+    List<Attendance> findByEmployeeId(String employeeId);
     // ค้นหา attendance ของพนักงานตาม employeeId และวันที่
     List<Attendance> findByEmployeeIdAndDate(String employeeId, LocalDate date);
+    List<Attendance> findAllByOrderByDateAsc();
 }
