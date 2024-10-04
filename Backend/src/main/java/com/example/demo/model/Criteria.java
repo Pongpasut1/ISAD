@@ -14,11 +14,11 @@ public class Criteria {
     @Id
     private Integer id;
 
-    private String criteria_id;
+    private String criteriaId;
 
     private String description;
 
-    private Article[] articles;
+    private String[] articlesId;
 
     private String department; //ของแผนกไหน
 
@@ -35,16 +35,16 @@ public class Criteria {
         return id;
     }
 
-    public String getCriteria_id(){
-        return criteria_id;
+    public String getCriteriaId(){
+        return criteriaId;
     }
 
     public String getDescription(){
         return description;
     }
 
-    public Article[] getArticles(){
-        return articles;
+    public String[] getArticlesId(){
+        return articlesId;
     }
 
     public String getDepartment(){
@@ -72,16 +72,16 @@ public class Criteria {
         this.id = id;
     }
 
-    public void setCriteria_id(String criteria_id) {
-        this.criteria_id = criteria_id;
+    public void setCriteriaId(String criteriaId) {
+        this.criteriaId = criteriaId;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setArticles(Article[] articles){
-        this.articles = articles;
+    public void setArticlesId(String[] articlesId){
+        this.articlesId = articlesId;
     }
 
     public void setDepartment(String department){

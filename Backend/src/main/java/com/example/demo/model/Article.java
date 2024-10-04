@@ -14,7 +14,7 @@ public class Article {
     @Id
     private Integer id;
 
-    private String article_id;
+    private String articleId;
 
     private String description; //คำอธิบายคำถาม
 
@@ -29,8 +29,8 @@ public class Article {
         return id;
     }
 
-    public String getArticle_id(){
-        return article_id;
+    public String getArticleId(){
+        return articleId;
     }
 
     public String getDescription(){
@@ -54,8 +54,8 @@ public class Article {
         this.id = id;
     }
 
-    public void setArticle_id(String article_id){
-        this.article_id = article_id;
+    public void setArticleId(String articleId){
+        this.articleId = articleId;
     }
 
     public void setDescription(String description){

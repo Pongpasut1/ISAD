@@ -18,7 +18,7 @@ public class EvaluationResults {
 
     private String emp_id;
 
-    private Criteria evaluation_cri;
+    private String criteriaId;
 
     private float KPI_score;
 
@@ -43,8 +43,8 @@ public class EvaluationResults {
         return emp_id;
     }
 
-    public Criteria getEvaluation_cri() {
-        return evaluation_cri;
+    public String getCriteriaId() {
+        return criteriaId;
     }
 
     public float getKPI_score() {
@@ -81,8 +81,8 @@ public class EvaluationResults {
         this.resultID = resultID;
     }
 
-    public void setEvaluation_cri(Criteria evaluation_cri) {
-        this.evaluation_cri = evaluation_cri;
+    public void setCriteriaId(String criteriaId) {
+        this.criteriaId = criteriaId;
     }
 
     public void setKPI_score(float KPI_score) {
