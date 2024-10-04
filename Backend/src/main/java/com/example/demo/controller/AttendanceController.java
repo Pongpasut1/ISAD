@@ -21,10 +21,20 @@ public class AttendanceController {
         return attendanceService.saveAttendance(attendance);
     }
 
+    @GetMapping("/employee/{employeeId}")
+    public List<Attendance> getAttendance(@PathVariable String employeeId) {
+        return attendanceService.getAttendanceByEmployeeId(employeeId);
+    }
+
     // ดึงข้อมูลการเข้างานของพนักงานตาม employeeId และวันที่
     @GetMapping("/employee/{employeeId}/date/{date}")
     public List<Attendance> getAttendance(@PathVariable String employeeId, @PathVariable String date) {
         LocalDate parsedDate = LocalDate.parse(date);
         return attendanceService.getAttendanceByEmployeeIdAndDate(employeeId, parsedDate);
+    }
+
+    @GetMapping("/attendances")
+    public List<Attendance> getAllAttendancesSortedByDate() {
+        return attendanceService.getAllAttendancesSortedByDate();
     }
 }

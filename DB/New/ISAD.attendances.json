@@ -16,7 +16,7 @@
   "lateMinutes": 15,
   "isLeave": false,
   "leaveReason": "",
-  "_class": "com.example.demo.Model.Attendance"
+  "_class": "com.example.demo.model.Attendance"
 },
 {
   "_id": {
@@ -36,5 +36,45 @@
   "lateMinutes": 0,
   "isLeave": false,
   "leaveReason": "",
-  "_class": "com.example.demo.Model.Attendance"
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "66ffaf515b338047b26f8fbe"
+  },
+  "employeeId": "07152022",
+  "date": {
+    "$date": "2023-10-01T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-01T00:40:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-01T10:20:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "66ffafaf5b338047b26f8fbf"
+  },
+  "employeeId": "07152022",
+  "date": {
+    "$date": "2023-10-02T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-03T00:30:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-03T10:30:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
 }]
