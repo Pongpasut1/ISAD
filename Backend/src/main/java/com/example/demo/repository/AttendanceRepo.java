@@ -12,4 +12,5 @@ public interface AttendanceRepo extends MongoRepository<Attendance, ObjectId> {
     // ค้นหา attendance ของพนักงานตาม employeeId และวันที่
     List<Attendance> findByEmployeeIdAndDate(String employeeId, LocalDate date);
     List<Attendance> findAllByOrderByDateAsc();
+    List<Attendance> findByEmployeeIdAndDateBetween(String employeeId, LocalDate startDate, LocalDate endDate);
 }
