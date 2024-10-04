@@ -1,18 +1,18 @@
 package com.example.demo.service;
 
 // Counter model class
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Setter
+@Getter
 @Document(collection = "counters")
 public class Counter {
+    // Getters and setters
     @Id
     private String id;
     private int seq;
 
-    // Getters and setters
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
-    public int getSeq() { return seq; }
-    public void setSeq(int seq) { this.seq = seq; }
 }
