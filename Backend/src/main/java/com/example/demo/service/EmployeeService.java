@@ -8,6 +8,8 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
@@ -29,13 +31,13 @@ public class EmployeeService {
         user.setUsername(username);
         user.setPassword(password);
         user.setRole(role);
-        user.setId(getNextSequenceId("employeeId"));  // Get the next ID
+        user.setId(String.valueOf(getNextSequenceId("employeeId")));  // Get the next ID
         return employeesRepo.save(user);
     }
 
     public Employees updateEmployee(Employees employee) {
         // ตรวจสอบว่าพนักงานมีอยู่หรือไม่
-        Employees existingEmployee = employeesRepo.findById(employee.getId()).orElse(null);
+        Employees existingEmployee = employeesRepo.findById(Integer.valueOf(employee.getId())).orElse(null);
         if (existingEmployee != null) {
             // อัปเดต
             existingEmployee.setUsername(employee.getUsername());
@@ -44,9 +46,9 @@ public class EmployeeService {
             existingEmployee.setEmp_id(employee.getEmp_id());
             existingEmployee.setName(employee.getName());
             existingEmployee.setSurname(employee.getSurname());
-            existingEmployee.setDOB(employee.getDOB());
+            existingEmployee.setDob(employee.getDob());
             existingEmployee.setEmail(employee.getEmail());
-            existingEmployee.setPhone_number(employee.getPhone_number());
+            existingEmployee.setPhoneNumber(employee.getPhoneNumber());
             existingEmployee.setDepartment(employee.getDepartment());
             // บันทึกพนักงานที่ถูกอัปเดต
             return employeesRepo.save(existingEmployee);
@@ -80,6 +82,14 @@ public class EmployeeService {
                 Counter.class
         );
         return counter != null ? counter.getSeq() : 1; // Return the next ID or 1 if no counter exists
+    }
+
+    public List<Employees> getAllEmployees() {
+        return employeesRepo.findAll();
+    }
+
+    public Employees getEmployeeByEmpId(String empId) {
+        return employeesRepo.findByEmpId(empId);
     }
 }
 

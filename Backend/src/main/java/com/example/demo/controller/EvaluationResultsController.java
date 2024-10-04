@@ -28,7 +28,7 @@ public class EvaluationResultsController {
 
     // รับผลการประเมินโดย ID
     @GetMapping("/{id}")
-    public EvaluationResults getEvaluationResultById(@PathVariable Integer id) {
+    public EvaluationResults getEvaluationResultById(@PathVariable String id) {
         return evaluationResultsService.getEvaluationResultById(id);
     }
 
@@ -40,7 +40,7 @@ public class EvaluationResultsController {
 
     // ลบผลการประเมิน
     @DeleteMapping("/delete/{id}")
-    public String deleteEvaluationResult(@PathVariable Integer id) {
+    public String deleteEvaluationResult(@PathVariable String id) {
         evaluationResultsService.deleteEvaluationResult(id);
         return "Deleted EvaluationResult with id " + id;
     }

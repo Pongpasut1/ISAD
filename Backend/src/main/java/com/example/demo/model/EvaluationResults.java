@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Map;
+
 @Document(collection = "evaResults")
 @Data
 @NoArgsConstructor
@@ -12,11 +14,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class EvaluationResults {
 
     @Id
-    private Integer id;
+    private String id;
 
     private String resultID;
 
-    private String emp_id;
+    private String empId;
 
     private String criteriaId;
 
@@ -30,8 +32,10 @@ public class EvaluationResults {
 
     private String comment;
 
+    private Map<String, Integer> scores;
+
     //getter
-    public Integer getId() {
+    public String  getId() {
         return id;
     }
 
@@ -40,7 +44,7 @@ public class EvaluationResults {
     }
 
     public String getEmp_id() {
-        return emp_id;
+        return empId;
     }
 
     public String getCriteriaId() {
@@ -69,12 +73,12 @@ public class EvaluationResults {
 
     //setter
 
-    public void setId(Integer id) {
+    public void setId(String  id) {
         this.id = id;
     }
 
-    public void setEmp_id(String emp_id) {
-        this.emp_id = emp_id;
+    public void setEmpId(String empId) {
+        this.empId = empId;
     }
 
     public void setResultID(String resultID) {
@@ -103,5 +107,13 @@ public class EvaluationResults {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public void setScores(Map<String, Integer> scores) {
+        this.scores = scores;
+    }
+
+    public void setTotalScore(float total_score) {
+        this.total_score = total_score;
     }
 }

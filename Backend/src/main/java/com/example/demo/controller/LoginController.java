@@ -18,8 +18,8 @@ public class LoginController {
     private EmployeeService employeeService;
 
     @PostMapping("/register")
-    public Employees registerUser(@RequestBody Employees user) {
-        return employeeService.registerUser(user.getUsername(), user.getPassword(), user.getRole());
+    public void addEmployees(@RequestBody Employees employees) {
+        employeeService.saveEmployee(employees);
     }
 
     @PostMapping("/login")

@@ -12,31 +12,31 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 public class Employees {
     @Id
-    private Integer id;
+    private String id;
 
     private String username;
 
     private String password;
 
-    private String Role;
+    private String role;
 
-    private String emp_id;
+    private String empId;
 
     private String name;
 
     private String surname;
 
-    private String DOB;
+    private String dob;
 
     private String email;
 
-    private String phone_number;
+    private String phoneNumber;
 
     private String department;
 
 
     //getter
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
@@ -49,11 +49,11 @@ public class Employees {
     }
 
     public String getRole() {
-        return Role;
+        return role;
     }
 
     public String getEmp_id() {
-        return emp_id;
+        return empId;
     }
 
     public String getName() {
@@ -64,16 +64,16 @@ public class Employees {
         return surname;
     }
 
-    public String getDOB() {
-        return DOB;
+    public String getDob() {
+        return dob;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public String getDepartment(){
@@ -82,7 +82,7 @@ public class Employees {
 
 
     //setter
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -95,11 +95,11 @@ public class Employees {
     }
 
     public void setRole(String role) {
-        Role = role;
+        this.role = role;
     }
 
     public void setEmp_id(String emp_id){
-        this.emp_id = emp_id;
+        this.empId = empId;
     }
 
     public void setName(String name){
@@ -111,16 +111,16 @@ public class Employees {
         this.surname = surname;
     }
 
-    public void setDOB(String DOB){
-        this.DOB = DOB;
+    public void setDob(String dob){
+        this.dob = dob;
     }
 
     public void setEmail(String email){
         this.email = email;
     }
 
-    public void setPhone_number(String phone_number){
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber){
+        this.phoneNumber = phoneNumber;
     }
 
     public void setDepartment(String department){
