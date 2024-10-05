@@ -10,7 +10,7 @@ function HrData() {
       ]);
     
     return (
-        <div>
+        <div className='container'>
           <Header />
           <SearchBar />
           <div className="employee-list">

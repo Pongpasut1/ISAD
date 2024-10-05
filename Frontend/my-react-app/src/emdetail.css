@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .header {
+    width: 100%;
+    background-color: #0504aa; /* สีพื้นหลัง */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+  }
+  
+  .profile-circle {
+    width: 40px;
+    height: 40px;
+    background-color: #bbb;
+    border-radius: 50%;
+  }
+
+  .employee-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+  .employee-form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .employee-form h2 {
+    color: white;
+    text-align: center;
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .employee-form .form-group {
+    display: flex;
+    align-items: center;
+    width: 90%;
+  }
+  
+  .employee-form .form-group label {
+    width: 60px;
+    text-align: right;
+    padding-right: 5px;
+    color: #0504aa;
+    font-weight: bold;
+  }
+  
+  .employee-form .form-group input,
+  .employee-form .form-group textarea {
+    padding: 5px;
+    border: 1px solid #0504aa;
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-right: 20px;
+  }
+
+  .employee-form .form-group.full-width {
+    flex-direction: row;
+  }
+
+  .employee-form .form-group.full-width textarea {
+  width: 100%; 
+  padding: 10px;
+  color: #0504aa;
+  background-color: #ffffff;
+  border: 1px solid #0504aa;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  overflow-y: auto; /* แสดงบาร์เลื่อนในแนวตั้ง */
+  resize: none; /* ไม่อนุญาตให้ปรับขนาด */
+  }
+  
+  .butt button {
+    padding: 10px 15px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 5px;
+  }
+
+/* hover ของปุ่มต้องไปแก้ที่ index.css
+  *แก้เสร็จดูหน้าอื่นด้วย โดยเฉพาะ login*/
+
+  
+  .link-back {
+    text-align: center;
+  }
+  
+  .link-back a {
+    color: #0504aa;
+    font-weight: bold;
+  }
+  
+  .link-back a:hover {
+    text-decoration: underline;
+  }
+  
