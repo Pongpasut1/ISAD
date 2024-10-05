@@ -47,5 +47,8 @@ public class Criteria {
     @Setter
     private int attendance_weight; //ค่าน้ำหนักคะแนนขาด ลา มาสาย
 
+    @Setter
+    private AttendanceCriteria attendance_criteria;
+
 
 }

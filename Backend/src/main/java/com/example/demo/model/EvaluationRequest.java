@@ -2,8 +2,11 @@ package com.example.demo.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.cglib.core.Local;
 
+import java.time.LocalDate;
 import java.util.Map;
+
 
 @Setter
 @Getter
@@ -16,6 +19,9 @@ public class EvaluationRequest {
     private Map<String, Integer> scores;
     // Getter and Setter for comment
     private String comment;
+
+    private LocalDate startDate;
+    private LocalDate endDate;
 
     // Constructor
     public EvaluationRequest() {}

@@ -1,28 +1,8 @@
 [{
   "_id": {
-    "$oid": "66fd680d3284f6284ee67151"
-  },
-  "employeeId": "12345",
-  "date": {
-    "$date": "2023-09-30T17:00:00.000Z"
-  },
-  "checkInTime": {
-    "$date": "2023-10-01T01:30:00.000Z"
-  },
-  "checkOutTime": {
-    "$date": "2023-10-01T10:30:00.000Z"
-  },
-  "isLate": true,
-  "lateMinutes": 15,
-  "isLeave": false,
-  "leaveReason": "",
-  "_class": "com.example.demo.model.Attendance"
-},
-{
-  "_id": {
     "$oid": "66fd6bdb23ee5e161c688284"
   },
-  "employeeId": "29102024",
+  "employeeId": "EMP001",
   "date": {
     "$date": "2023-09-30T17:00:00.000Z"
   },
@@ -40,49 +20,9 @@
 },
 {
   "_id": {
-    "$oid": "66ffaf515b338047b26f8fbe"
-  },
-  "employeeId": "07152022",
-  "date": {
-    "$date": "2023-10-01T17:00:00.000Z"
-  },
-  "checkInTime": {
-    "$date": "2023-10-01T00:40:00.000Z"
-  },
-  "checkOutTime": {
-    "$date": "2023-10-01T10:20:00.000Z"
-  },
-  "isLate": false,
-  "lateMinutes": 0,
-  "isLeave": false,
-  "leaveReason": "",
-  "_class": "com.example.demo.model.Attendance"
-},
-{
-  "_id": {
-    "$oid": "66ffafaf5b338047b26f8fbf"
-  },
-  "employeeId": "07152022",
-  "date": {
-    "$date": "2023-10-02T17:00:00.000Z"
-  },
-  "checkInTime": {
-    "$date": "2023-10-03T00:30:00.000Z"
-  },
-  "checkOutTime": {
-    "$date": "2023-10-03T10:30:00.000Z"
-  },
-  "isLate": false,
-  "lateMinutes": 0,
-  "isLeave": false,
-  "leaveReason": "",
-  "_class": "com.example.demo.model.Attendance"
-},
-{
-  "_id": {
     "$oid": "6700035fd0905a4f1fae60d5"
   },
-  "employeeId": "29112024",
+  "employeeId": "EMP001",
   "date": {
     "$date": "2023-09-30T17:00:00.000Z"
   },
@@ -102,7 +42,7 @@
   "_id": {
     "$oid": "670003b8d0905a4f1fae60d6"
   },
-  "employeeId": "29112024",
+  "employeeId": "EMP001",
   "date": {
     "$date": "2023-10-01T17:00:00.000Z"
   },
@@ -116,7 +56,7 @@
   "_id": {
     "$oid": "670004b8d0905a4f1fae60d7"
   },
-  "employeeId": "29112024",
+  "employeeId": "EMP001",
   "date": {
     "$date": "2023-10-02T17:00:00.000Z"
   },
@@ -136,7 +76,7 @@
   "_id": {
     "$oid": "6700050cd0905a4f1fae60d8"
   },
-  "employeeId": "29112024",
+  "employeeId": "EMP001",
   "date": {
     "$date": "2023-10-03T17:00:00.000Z"
   },
@@ -156,7 +96,7 @@
   "_id": {
     "$oid": "67000673d0905a4f1fae60d9"
   },
-  "employeeId": "29112024",
+  "employeeId": "EMP001",
   "date": {
     "$date": "2023-10-04T17:00:00.000Z"
   },
@@ -176,7 +116,7 @@
   "_id": {
     "$oid": "670006b0d0905a4f1fae60da"
   },
-  "employeeId": "29112024",
+  "employeeId": "EMP001",
   "date": {
     "$date": "2023-10-05T17:00:00.000Z"
   },
@@ -196,7 +136,7 @@
   "_id": {
     "$oid": "6700076dd0905a4f1fae60db"
   },
-  "employeeId": "29112024",
+  "employeeId": "EMP001",
   "date": {
     "$date": "2023-10-06T17:00:00.000Z"
   },
@@ -216,7 +156,7 @@
   "_id": {
     "$oid": "6700078ad0905a4f1fae60dc"
   },
-  "employeeId": "29112024",
+  "employeeId": "EMP001",
   "date": {
     "$date": "2023-10-07T17:00:00.000Z"
   },
@@ -236,7 +176,7 @@
   "_id": {
     "$oid": "670007d9d0905a4f1fae60dd"
   },
-  "employeeId": "29112024",
+  "employeeId": "EMP001",
   "date": {
     "$date": "2023-10-07T17:00:00.000Z"
   },
@@ -250,7 +190,7 @@
   "_id": {
     "$oid": "67000801d0905a4f1fae60de"
   },
-  "employeeId": "29112024",
+  "employeeId": "EMP001",
   "date": {
     "$date": "2023-10-08T17:00:00.000Z"
   },
@@ -270,7 +210,7 @@
   "_id": {
     "$oid": "67000832d0905a4f1fae60df"
   },
-  "employeeId": "29112024",
+  "employeeId": "EMP001",
   "date": {
     "$date": "2023-10-09T17:00:00.000Z"
   },
@@ -280,8 +220,8 @@
   "checkOutTime": {
     "$date": "2023-10-10T10:15:00.000Z"
   },
-  "isLate": false,
-  "lateMinutes": 0,
+  "isLate": true,
+  "lateMinutes": 30,
   "isLeave": false,
   "leaveReason": "",
   "_class": "com.example.demo.model.Attendance"

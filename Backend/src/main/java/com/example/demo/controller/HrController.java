@@ -1,16 +1,14 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Criteria;
-import com.example.demo.model.Employees;
-import com.example.demo.model.EvaluationResults;
-import com.example.demo.model.EvaluationCriterion;
-import com.example.demo.model.EvaluationRequest;
+import com.example.demo.model.*;
+import com.example.demo.service.AttendanceService;
 import com.example.demo.service.CriteriaService;
 import com.example.demo.service.EmployeeService;
 import com.example.demo.service.EvaluationResultsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +24,9 @@ public class HrController {
 
     @Autowired
     private CriteriaService criteriaService;
+
+    @Autowired
+    private AttendanceService attendanceService;
 
     // ตั้งค่าเกณฑ์การประเมิน
     @PostMapping("/setCriteria")
@@ -65,10 +66,6 @@ public class HrController {
                             abilityScore += weightedScore;
                             abilityWeightSum += criterion.getWeight();
                             break;
-                        case "Attendance":
-                            attendanceScore += weightedScore;
-                            attendanceWeightSum += criterion.getWeight();
-                            break;
                     }
                 }
 
@@ -79,11 +76,19 @@ public class HrController {
                 if (abilityWeightSum > 0) {
                     abilityScore = (abilityScore / abilityWeightSum) * 100;
                 }
-                if (attendanceWeightSum > 0) {
-                    attendanceScore = (attendanceScore / attendanceWeightSum) * 100;
-                }
+                // ใช้ startDate และ endDate จาก EvaluationRequest
+                LocalDate startDate = evaluationRequest.getStartDate();
+                LocalDate endDate = evaluationRequest.getEndDate();
+                AttendanceCriteria attendanceCriteria = criteria.getAttendance_criteria();
 
-                // สร้างผลการประเมิน
+                // คำนวณ attendance score
+                attendanceScore = (float) attendanceService.calculateTotalScore(employee.getEmpId(), startDate, endDate, attendanceCriteria);
+                float attendance_max = criteria.getAttendance_criteria().getMaxLeaveScore() + criteria.getAttendance_criteria().getMaxLateScore();
+                attendanceWeightSum += criteria.getAttendance_weight();
+                attendanceScore = (attendanceScore/attendance_max)*attendanceWeightSum;
+
+                totalScore += attendanceScore;
+
                 EvaluationResults evaluationResults = new EvaluationResults();
                 evaluationResults.setEmpId(evaluationRequest.getEmployeeId());
                 evaluationResults.setCriteriaId(evaluationRequest.getCriteriaId());

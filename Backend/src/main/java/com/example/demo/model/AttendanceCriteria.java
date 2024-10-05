@@ -10,7 +10,7 @@ import java.util.List;
 
 @Setter
 @Getter
-@Document(collection = "criterias")
+@Document(collection = "attendacecriterias")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
