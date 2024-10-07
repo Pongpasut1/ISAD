@@ -28,16 +28,6 @@ public class EmployeeService {
         return employeesRepo.save(employee);
     }
 
-    public Employees registerUser(String username, String password, String role) {
-        Employees user = new Employees();
-        user.setId(sequenceGeneratorService.generateSequence(Employees.SEQUENCE_NAME)); // กำหนดค่า ID
-        user.setEmpId("EMP" + user.getId()); // กำหนด empId เช่น "EMP1", "EMP2"
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setRole(role);
-        return employeesRepo.save(user);
-    }
-
 
     public Employees updateEmployee(Employees employee) {
         if (employee.getId() == null) {
