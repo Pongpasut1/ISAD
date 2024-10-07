@@ -50,6 +50,7 @@ public class EmployeeService {
             existingEmployee.setDepartment(employee.getDepartment());
             existingEmployee.setHiredate(employee.getHiredate());
             existingEmployee.setAddress(employee.getAddress());
+            existingEmployee.setNametitle(employee.getNametitle());
             // บันทึกพนักงานที่ถูกอัปเดต
             return employeesRepo.save(existingEmployee);
         } else {

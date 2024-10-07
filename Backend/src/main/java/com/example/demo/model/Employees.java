@@ -65,6 +65,10 @@ public class Employees {
     @Getter
     private String address;
 
+    @Setter
+    @Getter
+    private String nametitle;
+
 
     /*public String getEmp_id() {
         return empId;
