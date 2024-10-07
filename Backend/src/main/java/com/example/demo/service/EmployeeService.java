@@ -24,6 +24,7 @@ public class EmployeeService {
     public Employees saveEmployee(Employees employee) {
         if (employee.getId() == null) {
             employee.setId(sequenceGeneratorService.generateSequence(Employees.SEQUENCE_NAME));
+            employee.setEmpId("EMP" + employee.getId()); // กำหนด empId เช่น "EMP1", "EMP2"
         }
         return employeesRepo.save(employee);
     }
