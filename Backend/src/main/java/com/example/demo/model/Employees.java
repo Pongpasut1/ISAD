@@ -57,15 +57,23 @@ public class Employees {
     @Getter
     private String department;
 
+    @Setter
+    @Getter
+    private String hiredate;
 
-    public String getEmp_id() {
+    @Setter
+    @Getter
+    private String address;
+
+
+    /*public String getEmp_id() {
         return empId;
     }
 
 
     public void setEmp_id(String emp_id){
         this.empId = empId;
-    }
+    }*/
 
 
 }
