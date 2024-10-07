@@ -54,4 +54,8 @@ public class EvaluationResultsService {
             throw new RuntimeException("EvaluationResult not found with id " + id);
         }
     }
+    // ดึงผลการประเมินทั้งหมดและจัดเรียงตามคะแนนรวมจากมากไปน้อย
+    public List<EvaluationResults> getAllEvaluationResultsSortedByTotalScoreDesc() {
+        return evaluationResultsRepo.findAllByOrderByTotalScoreDesc();
+    }
 }

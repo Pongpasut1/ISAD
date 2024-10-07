@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -114,4 +115,27 @@ public class HrController {
     public List<Employees> manageData() {
         return employeeService.getAllEmployees();
     }
+
+    @GetMapping("/employees/evaluations")
+    public List<EmployeeEvaluationDTO> getEmployeesWithEvaluations() {
+        List<EvaluationResults> evaluationResults = evaluationResultsService.getAllEvaluationResultsSortedByTotalScoreDesc();
+        List<EmployeeEvaluationDTO> employeeEvaluations = new ArrayList<>();
+
+        for (EvaluationResults result : evaluationResults) {
+            Employees employee = employeeService.getEmployeeByEmpId(result.getEmpId());
+            if (employee != null) {
+                EmployeeEvaluationDTO dto = new EmployeeEvaluationDTO(
+                        employee.getEmpId(),
+                        employee.getName(),
+                        employee.getSurname(),
+                        employee.getDepartment(),
+                        result.getTotal_score()
+                );
+                employeeEvaluations.add(dto);
+            }
+        }
+
+        return employeeEvaluations;
+    }
 }
+
