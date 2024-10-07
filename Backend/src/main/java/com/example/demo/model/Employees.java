@@ -9,12 +9,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employees {
+
+    public static final String SEQUENCE_NAME = "employees_sequence";
+
     //setter
     //getter
     @Setter
     @Getter
     @Id
-    private String id;
+    private Long id;
 
     @Setter
     @Getter

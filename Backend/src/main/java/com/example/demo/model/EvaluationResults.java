@@ -12,10 +12,11 @@ import java.util.Map;
 @AllArgsConstructor
 public class EvaluationResults {
 
-    //getter
+    public static final String SEQUENCE_NAME = "evaluation_results_sequence";
+
     @Getter
     @Id
-    private String id;
+    private Long id;
 
     @Getter
     private String resultID;

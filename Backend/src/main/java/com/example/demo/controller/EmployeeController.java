@@ -12,9 +12,10 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+
     @PostMapping("/add")
-    public void addEmployees(@RequestBody Employees employees) {
-        employeeService.saveEmployee(employees);
+    public Employees addEmployee(@RequestBody Employees employee) {
+        return employeeService.saveEmployee(employee);
     }
 
     @PostMapping("/update")

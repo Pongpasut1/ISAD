@@ -3,15 +3,11 @@ package com.example.demo.service;
 import com.example.demo.model.Employees;
 import com.example.demo.repository.EmployeesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-import static org.springframework.data.mongodb.core.query.Criteria.where;
-import static org.springframework.data.mongodb.core.query.Query.query;
+import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -22,28 +18,39 @@ public class EmployeeService {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public void saveEmployee(Employees employee) {
-        employeesRepo.save(employee);
+    @Autowired
+    private SequenceGeneratorService sequenceGeneratorService;
+
+    public Employees saveEmployee(Employees employee) {
+        if (employee.getId() == null) {
+            employee.setId(sequenceGeneratorService.generateSequence(Employees.SEQUENCE_NAME));
+        }
+        return employeesRepo.save(employee);
     }
 
     public Employees registerUser(String username, String password, String role) {
         Employees user = new Employees();
+        user.setId(sequenceGeneratorService.generateSequence(Employees.SEQUENCE_NAME)); // กำหนดค่า ID
+        user.setEmpId("EMP" + user.getId()); // กำหนด empId เช่น "EMP1", "EMP2"
         user.setUsername(username);
         user.setPassword(password);
         user.setRole(role);
-        user.setId(String.valueOf(getNextSequenceId("employeeId")));  // Get the next ID
         return employeesRepo.save(user);
     }
 
+
     public Employees updateEmployee(Employees employee) {
-        // ตรวจสอบว่าพนักงานมีอยู่หรือไม่
-        Employees existingEmployee = employeesRepo.findById(Integer.valueOf(employee.getId())).orElse(null);
-        if (existingEmployee != null) {
-            // อัปเดต
+        if (employee.getId() == null) {
+            throw new IllegalArgumentException("ID ของพนักงานไม่สามารถเป็น null ได้");
+        }
+        Optional<Employees> existingEmployeeOpt = employeesRepo.findById(employee.getId());
+        if (existingEmployeeOpt.isPresent()) {
+            Employees existingEmployee = existingEmployeeOpt.get();
+            // อัปเดตข้อมูลตามที่ต้องการ
             existingEmployee.setUsername(employee.getUsername());
             existingEmployee.setPassword(employee.getPassword());
             existingEmployee.setRole(employee.getRole());
-            existingEmployee.setEmp_id(employee.getEmp_id());
+            existingEmployee.setEmpId(employee.getEmpId());
             existingEmployee.setName(employee.getName());
             existingEmployee.setSurname(employee.getSurname());
             existingEmployee.setDob(employee.getDob());
@@ -53,8 +60,7 @@ public class EmployeeService {
             // บันทึกพนักงานที่ถูกอัปเดต
             return employeesRepo.save(existingEmployee);
         } else {
-            // หากไม่พบพนักงาน ให้จัดการตามที่เหมาะสม
-            throw new RuntimeException("Employee not found with id " + employee.getId());
+            throw new RuntimeException("ไม่พบพนักงานที่มี id " + employee.getId());
         }
     }
 
@@ -71,18 +77,6 @@ public class EmployeeService {
         }
     }
 
-
-    // Method to get the next sequence ID
-    private synchronized int getNextSequenceId(String sequenceName) {
-        // Assuming you have a collection named "counters" with a document structure for sequences
-        Counter counter = mongoTemplate.findAndModify(
-                query(where("_id").is(sequenceName)),
-                new Update().inc("seq", 1),
-                FindAndModifyOptions.options().returnNew(true).upsert(true),
-                Counter.class
-        );
-        return counter != null ? counter.getSeq() : 1; // Return the next ID or 1 if no counter exists
-    }
 
     public List<Employees> getAllEmployees() {
         return employeesRepo.findAll();

@@ -14,8 +14,12 @@ public class EvaluationResultsService {
     @Autowired
     private EvaluationResultsRepo evaluationResultsRepo;
 
+    @Autowired
+    private SequenceGeneratorService sequenceGeneratorService;
+
     // สร้างผลการประเมินใหม่
     public EvaluationResults createEvaluationResult(EvaluationResults evaluationResult) {
+        evaluationResult.setId(sequenceGeneratorService.generateSequence(EvaluationResults.SEQUENCE_NAME));
         return evaluationResultsRepo.save(evaluationResult);
     }
 
@@ -25,7 +29,7 @@ public class EvaluationResultsService {
     }
 
     // รับผลการประเมินโดย ID
-    public EvaluationResults getEvaluationResultById(String id) {
+    public EvaluationResults getEvaluationResultById(Long id) {
         Optional<EvaluationResults> result = evaluationResultsRepo.findById(id);
         return result.orElseThrow(() -> new RuntimeException("EvaluationResult not found with id " + id));
     }
@@ -43,7 +47,7 @@ public class EvaluationResultsService {
     }
 
     // ลบผลการประเมิน
-    public void deleteEvaluationResult(String id) {
+    public void deleteEvaluationResult(Long id) {
         if (evaluationResultsRepo.existsById(id)) {
             evaluationResultsRepo.deleteById(id);
         } else {
