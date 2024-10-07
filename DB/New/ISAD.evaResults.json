@@ -1,0 +1,51 @@
+[{
+  "_id": {
+    "$numberLong": "4"
+  },
+  "empId": "EMP6",
+  "criteriaId": "CRIT002",
+  "KPI_score": 90,
+  "ability_score": 80,
+  "attendance_score": 10,
+  "total_score": 79,
+  "comment": "Great performance",
+  "scores": {
+    "CRIT_KPI1": 9,
+    "CRIT_ABILITY1": 8
+  },
+  "_class": "com.example.demo.model.EvaluationResults"
+},
+{
+  "_id": {
+    "$numberLong": "5"
+  },
+  "empId": "EMP7",
+  "criteriaId": "CRIT002",
+  "KPI_score": 40,
+  "ability_score": 50,
+  "attendance_score": 20,
+  "total_score": 55,
+  "comment": "Should improve",
+  "scores": {
+    "CRIT_KPI1": 4,
+    "CRIT_ABILITY1": 5
+  },
+  "_class": "com.example.demo.model.EvaluationResults"
+},
+{
+  "_id": {
+    "$numberLong": "6"
+  },
+  "empId": "EMP5",
+  "criteriaId": "CRIT001",
+  "KPI_score": 90,
+  "ability_score": 90,
+  "attendance_score": 20,
+  "total_score": 92,
+  "comment": "Great performance",
+  "scores": {
+    "CRIT_KPI1": 9,
+    "CRIT_ABILITY1": 9
+  },
+  "_class": "com.example.demo.model.EvaluationResults"
+}]

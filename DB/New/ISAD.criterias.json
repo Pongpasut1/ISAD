@@ -1,0 +1,74 @@
+[{
+  "_id": {
+    "$oid": "6700e00b2833073f17f5cd05"
+  },
+  "evaluationCriteria": [
+    {
+      "criterionId": "CRIT_KPI1",
+      "description": "ประสิทธิภาพการทำงาน",
+      "maxScore": 10,
+      "weight": 50,
+      "type": "KPI"
+    },
+    {
+      "criterionId": "CRIT_ABILITY1",
+      "description": "ทักษะการสื่อสาร",
+      "maxScore": 10,
+      "weight": 30,
+      "type": "Ability"
+    }
+  ],
+  "criteriaId": "CRIT001",
+  "description": "เกณฑ์การประเมินสำหรับตำแหน่งผู้จัดการ",
+  "department": "Sales",
+  "role": "HR",
+  "KPI_weight": 0,
+  "ability_weight": 0,
+  "attendance_weight": 20,
+  "attendance_criteria": {
+    "maxLeaveScore": 5,
+    "maxLateScore": 8,
+    "maxSickLeaveDays": 10,
+    "maxPersonalLeaveDays": 5,
+    "maxVacationLeaveDays": 5,
+    "maxLateMinutes": 60
+  },
+  "_class": "com.example.demo.model.Criteria"
+},
+{
+  "_id": {
+    "$oid": "6700f37d70a5492a131be0ce"
+  },
+  "evaluationCriteria": [
+    {
+      "criterionId": "CRIT_KPI1",
+      "description": "ประสิทธิภาพการทำงาน",
+      "maxScore": 10,
+      "weight": 50,
+      "type": "KPI"
+    },
+    {
+      "criterionId": "CRIT_ABILITY1",
+      "description": "ทักษะการสื่อสาร",
+      "maxScore": 10,
+      "weight": 30,
+      "type": "Ability"
+    }
+  ],
+  "criteriaId": "CRIT002",
+  "description": "เกณฑ์การประเมินสำหรับตำแหน่งพนักงาน",
+  "department": "Sales",
+  "role": "HR",
+  "KPI_weight": 0,
+  "ability_weight": 0,
+  "attendance_weight": 20,
+  "attendance_criteria": {
+    "maxLeaveScore": 10,
+    "maxLateScore": 10,
+    "maxSickLeaveDays": 10,
+    "maxPersonalLeaveDays": 5,
+    "maxVacationLeaveDays": 5,
+    "maxLateMinutes": 60
+  },
+  "_class": "com.example.demo.model.Criteria"
+}]
