@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; // For CSS styling
+import './Login.css'; // สำหรับการจัดแต่ง CSS
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -20,25 +20,34 @@ const Login = () => {
 
       const data = await response.json();
 
-      //ตรวจ Username
       if (response.ok) {
         console.log(data.message);
         setErrorMessage('');
-        if (username.toLowerCase().startsWith('em')){
-          navigate('/employee'); // นำทางไปยังหน้าสำหรับพนักงาน
-        } else if (username.toLowerCase().startsWith('ad')) {
-          navigate('/hr'); // นำทางไปยังหน้าhr
-        } else if (username.toLocaleLowerCase().startsWith('ch')){
-          navigate('/chief'); //นำทางไปยังหน้าหัวหน้า
+        localStorage.setItem('userRole', data.role);
+
+        switch (data.role.toLowerCase()) {
+          case 'employee':
+            navigate('/employee');
+            break;
+          case 'hr':
+            navigate('/hr');
+            break;
+          case 'chief':
+            navigate('/chief');
+            break;
+          default:
+            setErrorMessage('Unknown role!');
+            break;
         }
       } else {
         setErrorMessage(data.error);
       }
     } catch (error) {
       console.error('Error:', error);
-      setErrorMessage('Error Try again!');
+      setErrorMessage('Error! Please try again.');
     }
   };
+
 
   return (
     <div className="login-container">
@@ -48,15 +57,17 @@ const Login = () => {
         {errorMessage && <p className="error">{errorMessage}</p>}
         <input
           type="text"
-          placeholder="username"
+          placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          required
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
         <button type="submit">Sign in</button>
       </form>
