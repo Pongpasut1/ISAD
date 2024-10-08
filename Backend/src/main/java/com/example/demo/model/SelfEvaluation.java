@@ -4,21 +4,22 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Map;
+
 @Setter
 @Getter
-@Document(collection = "selfEvaResults")
+@Document(collection = "selfevaluation")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+public class SelfEvaluation {
 
-public class SelfEvaluationResults {
-    //getter
+    public static final String SEQUENCE_NAME = "self_evaluation_sequence";
+
     @Id
-    private Integer id;
+    private Long id;
 
-    private String self_resultID;
-
-    private String emp_id;
+    private String empId;
 
     private String criteriaId;
 
@@ -32,6 +33,6 @@ public class SelfEvaluationResults {
 
     private String comment;
 
-    //setter
+    private Map<String, Integer> scores;
 
 }
