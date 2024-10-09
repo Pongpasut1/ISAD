@@ -86,8 +86,11 @@ public class HrController {
                 attendanceScore = (float) attendanceService.calculateTotalScore(employee.getEmpId(), startDate, endDate, attendanceCriteria);
                 float attendance_max = criteria.getAttendance_criteria().getMaxLeaveScore() + criteria.getAttendance_criteria().getMaxLateScore();
                 attendanceWeightSum += criteria.getAttendance_weight();
-                attendanceScore = (attendanceScore/attendance_max)*attendanceWeightSum;
-
+                if (attendance_max > 0 && attendanceWeightSum > 0) {
+                    attendanceScore = (attendanceScore / attendance_max) * attendanceWeightSum;
+                } else {
+                    attendanceScore = 0; // กำหนดให้คะแนนเป็น 0 ถ้าค่าน้ำหนักหรือคะแนนเต็มเป็น 0
+                }
                 totalScore += attendanceScore;
 
                 EvaluationResults evaluationResults = new EvaluationResults();
