@@ -6,6 +6,8 @@ import com.example.demo.service.CriteriaService;
 import com.example.demo.service.EmployeeService;
 import com.example.demo.service.EvaluationResultsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -31,8 +33,22 @@ public class HrController {
 
     // ตั้งค่าเกณฑ์การประเมิน
     @PostMapping("/setCriteria")
-    public void setCriteria(@RequestBody Criteria criteria) {
-        criteriaService.saveCriteria(criteria);
+    public ResponseEntity<String> setCriteria(@RequestBody Criteria criteria) {
+        try {
+            // Save criteria after validation
+            criteriaService.saveCriteria(criteria);
+            return new ResponseEntity<>("Criteria saved successfully", HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            // Send a response with an error message
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    // Handle any unhandled exceptions
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseEntity<String> handleAllExceptions(Exception ex) {
+        return new ResponseEntity<>("An unexpected error occurred", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     // ประเมินพนักงานโดยใช้ EvaluationRequest
