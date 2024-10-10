@@ -532,7 +532,7 @@
   },
   "isLate": false,
   "lateMinutes": 0,
-  "isLeave": false,
+  "isLeave": true,
   "leaveReason": "personalLeave",
   "_class": "com.example.demo.model.Attendance"
 },
@@ -546,7 +546,7 @@
   },
   "isLate": false,
   "lateMinutes": 0,
-  "isLeave": false,
+  "isLeave": true,
   "leaveReason": "personalLeave",
   "_class": "com.example.demo.model.Attendance"
 },
@@ -560,7 +560,7 @@
   },
   "isLate": false,
   "lateMinutes": 0,
-  "isLeave": false,
+  "isLeave": true,
   "leaveReason": "personalLeave",
   "_class": "com.example.demo.model.Attendance"
 },

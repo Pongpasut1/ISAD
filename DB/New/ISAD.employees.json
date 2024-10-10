@@ -1,9 +1,9 @@
 [{
   "_id": {
-    "$numberLong": "5"
+    "$numberLong": "9"
   },
   "username": "hr1",
-  "password": "password",
+  "password": "$2a$10$q.P1vi4FwjqHprIaL2nz9.0R.vHtqw/mW/nb4K0KhOEpq6Jp8vh5e",
   "role": "HR",
   "empId": "EMP5",
   "name": "อนงค์",
@@ -19,10 +19,10 @@
 },
 {
   "_id": {
-    "$numberLong": "6"
+    "$numberLong": "11"
   },
   "username": "emp6",
-  "password": "password",
+  "password": "$2a$10$ok2MK5QHL1oEIeqLk87tzuZhNwfVJYE3fOn3rDJxLteZz.ZGgrWIW",
   "role": "Employee",
   "empId": "EMP6",
   "name": "สมชาย",
@@ -38,10 +38,10 @@
 },
 {
   "_id": {
-    "$numberLong": "7"
+    "$numberLong": "12"
   },
   "username": "emp7",
-  "password": "password",
+  "password": "$2a$10$pWnm9Cd0cmLZY3TGMb98TOJehurRJhuoJl.0RAcub15./qf.MUOm2",
   "role": "Employee",
   "empId": "EMP7",
   "name": "อันดา",

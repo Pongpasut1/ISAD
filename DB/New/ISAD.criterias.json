@@ -71,4 +71,85 @@
     "maxLateMinutes": 60
   },
   "_class": "com.example.demo.model.Criteria"
+},
+{
+  "_id": {
+    "$oid": "6706b76ee1d3fa130e95ccae"
+  },
+  "evaluationCriteria": [
+    {
+      "criterionId": "CRIT_KPI1",
+      "description": "ประสิทธิภาพการทำงาน",
+      "maxScore": 10,
+      "weight": 50,
+      "type": "KPI"
+    },
+    {
+      "criterionId": "CRIT_ABILITY1",
+      "description": "ทักษะการสื่อสาร",
+      "maxScore": 10,
+      "weight": 50,
+      "type": "Ability"
+    }
+  ],
+  "criteriaId": "CRIT003",
+  "description": "เกณฑ์การประเมินสำหรับตำแหน่งพนักงาน",
+  "department": "Sales",
+  "role": "HR",
+  "KPI_weight": 0,
+  "ability_weight": 0,
+  "attendance_weight": 0,
+  "attendance_criteria": {
+    "maxLeaveScore": 0,
+    "maxLateScore": 0,
+    "maxSickLeaveDays": 10,
+    "maxPersonalLeaveDays": 5,
+    "maxVacationLeaveDays": 5,
+    "maxLateMinutes": 60
+  },
+  "_class": "com.example.demo.model.Criteria"
+},
+{
+  "_id": {
+    "$oid": "6706c5c1c411951a3252ff1b"
+  },
+  "evaluationCriteria": [
+    {
+      "criterionId": "CRIT_KPI1",
+      "description": "ประสิทธิภาพการทำงาน",
+      "maxScore": 10,
+      "weight": 40,
+      "type": "KPI"
+    },
+    {
+      "criterionId": "CRIT_KPI2",
+      "description": "ขายของให้ลูกค้าได้มากกว่า 5 ราย",
+      "maxScore": 10,
+      "weight": 30,
+      "type": "KPI"
+    },
+    {
+      "criterionId": "CRIT_ABILITY1",
+      "description": "ทักษะการสื่อสาร",
+      "maxScore": 10,
+      "weight": 20,
+      "type": "Ability"
+    }
+  ],
+  "criteriaId": "CRIT004",
+  "description": "เกณฑ์การประเมินสำหรับตำแหน่งพนักงาน",
+  "department": "Sales",
+  "role": "HR",
+  "KPI_weight": 0,
+  "ability_weight": 0,
+  "attendance_weight": 10,
+  "attendance_criteria": {
+    "maxLeaveScore": 10,
+    "maxLateScore": 10,
+    "maxSickLeaveDays": 10,
+    "maxPersonalLeaveDays": 5,
+    "maxVacationLeaveDays": 5,
+    "maxLateMinutes": 60
+  },
+  "_class": "com.example.demo.model.Criteria"
 }]

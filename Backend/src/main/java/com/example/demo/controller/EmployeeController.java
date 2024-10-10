@@ -76,6 +76,7 @@ public class EmployeeController {
                 float kpiWeightSum = 0;
                 float abilityWeightSum = 0;
                 float attendanceScore = 0; // ถ้ามีฟิลด์ attendance_score
+                float attendanceWeightSum = 0;
 
                 for (EvaluationCriterion criterion : criteria.getEvaluationCriteria()) {
                     Integer score = scores.get(criterion.getCriterionId());
@@ -104,8 +105,8 @@ public class EmployeeController {
                             abilityWeightSum += criterion.getWeight();
                             break;
                         case "Attendance":
-                            attendanceScore += weightedScore;
-                            // ถ้ามีการใช้ weight สำหรับ Attendance สามารถเพิ่มได้
+                            //attendanceScore += weightedScore;
+                            attendanceWeightSum += criteria.getAttendance_weight();
                             break;
                         default:
                             // จัดการกับประเภทอื่นๆ หากมี
@@ -122,6 +123,35 @@ public class EmployeeController {
 
                 LocalDate startDate = evaluationRequest.getStartDate();
                 LocalDate endDate = evaluationRequest.getEndDate();
+                attendanceWeightSum += criteria.getAttendance_weight();
+                if (criteria != null) {
+                    AttendanceCriteria attendanceCriteria = criteria.getAttendance_criteria();
+                    System.out.println("Attendance Criteria: " + attendanceCriteria);
+                    if (attendanceCriteria != null) {
+                        float attendance_max = attendanceCriteria.getMaxLeaveScore() + attendanceCriteria.getMaxLateScore();
+                        attendanceScore = (float) attendanceService.calculateTotalScore(employee.getEmpId(), startDate, endDate, attendanceCriteria);
+
+                        if (attendance_max > 0 && attendanceWeightSum > 0) {
+                            attendanceScore = (attendanceScore / attendance_max) * attendanceWeightSum;
+                        } else {
+                            attendanceScore = 0; // กำหนดให้คะแนนเป็น 0 ถ้าค่าน้ำหนักหรือคะแนนเต็มเป็น 0
+                        }
+                    } else {
+                        System.out.println("Attendance criteria is null for the given criteria.");
+                    }
+                } else {
+                    System.out.println("Criteria is null.");
+                }
+
+                totalScore += attendanceScore;
+                if (attendanceWeightSum > 0) {
+                        attendanceScore = (attendanceScore / attendanceWeightSum) * 100; // ปรับเป็นเปอร์เซ็นต์
+                    }
+
+                //System.out.println("attendance_max: " + attendance_max);
+                System.out.println("attendanceScore: " + attendanceScore);
+                System.out.println("attendanceWeightSum: " + attendanceWeightSum);
+
 
                 SelfEvaluation selfEvaluation = new SelfEvaluation();
                 selfEvaluation.setEmpId(empId);

@@ -92,6 +92,9 @@ public class HrController {
                     attendanceScore = 0; // กำหนดให้คะแนนเป็น 0 ถ้าค่าน้ำหนักหรือคะแนนเต็มเป็น 0
                 }
                 totalScore += attendanceScore;
+                if(attendanceScore > 0){
+                    attendanceScore = (attendanceScore/attendanceWeightSum)*100;
+                }
 
                 EvaluationResults evaluationResults = new EvaluationResults();
                 evaluationResults.setEmpId(evaluationRequest.getEmployeeId());

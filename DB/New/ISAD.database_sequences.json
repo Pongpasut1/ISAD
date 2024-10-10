@@ -1,0 +1,12 @@
+[{
+  "_id": "employees_sequence",
+  "seq": 12
+},
+{
+  "_id": "evaluation_results_sequence",
+  "seq": 20
+},
+{
+  "_id": "self_evaluation_sequence",
+  "seq": 19
+}]
