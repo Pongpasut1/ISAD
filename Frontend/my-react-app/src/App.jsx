@@ -6,6 +6,8 @@ import HrPage from './hrpage';
 import ChiefPage from './chief';
 import HrData from './hrdata';
 import EmDetail from './emdetail';
+import HrEvaluation from './hrevaluation';
+import HrCriteria from './hrcriteria';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/chief" element={<ChiefPage />} />
           <Route path="/hr/hrdata" element={<HrData />} />
           <Route path="/hr/hrdata/employee/:id" element={<EmDetail />} />
+          <Route path="/hr/evaluation" element={<HrEvaluation />} />
+          <Route path="/hr/evaluation/criteria" element={<HrCriteria />} />
         </Routes>
       </div>
     </Router>

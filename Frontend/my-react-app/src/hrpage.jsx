@@ -1,5 +1,6 @@
 import React from 'react';
-import './people.css'
+import { Link } from 'react-router-dom';
+import './people.css';
 
 // ** ยังไม่เสร็จ **
 const HrPage = () => {
@@ -10,8 +11,12 @@ const HrPage = () => {
         <div className="circle"> </div>
       </header>
       <div className="buttons-container">
-        <button className="button">ข้อมูลพนักงาน</button>
-        <button className="button">ประเมิน</button>
+        <Link to="/hr/hrdata">
+          <button className="button">ข้อมูลพนักงาน</button>
+        </Link>
+        <Link to="/hr/evaluation">
+          <button className="button">ประเมิน</button>
+        </Link>
         <button className="button">เงินเดือน</button>
       </div>
     </div>
