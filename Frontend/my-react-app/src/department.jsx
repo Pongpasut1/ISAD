@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './department.css';
 
 function Department() {
-    const [departments, setDepartments] = useState([]);
+  const [departments, setDepartments] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [newDepartment, setNewDepartment] = useState('');
   const [deptToDelete, setDeptToDelete] = useState('');
@@ -22,7 +22,7 @@ function Department() {
   return (
     <div className="App">
       {currentPage === 1 && (
-        <FirstPage
+        <HrCriteria
           departments={departments}
           onAdd={() => setCurrentPage(2)}
           onDelete={(dept) => {
@@ -51,56 +51,72 @@ function Department() {
 }
 
 
-function FirstPage({ departments, onAdd, onDelete }) {
-    return (
-      <div className="page first-page">
-        <h2>เกณฑ์การประเมินพนักงาน</h2>
-        <ul>
-          {departments.length === 0 ? (
-            <li>ไม่มีเกณฑ์การประเมิน</li>
-          ) : (
-            departments.map((dept, index) => (
-              <li key={index}>
-                {dept}
-                <button className="delete-btn" onClick={() => onDelete(dept)}>ลบ</button>
-              </li>
-            ))
-          )}
-        </ul>
-        <button className="add-button" onClick={onAdd}>+</button>
+const HrCriteria = ({ departments, onAdd, onDelete }) => {
+  return (
+    <div className='container'>
+      <Header />
+      <SearchBar onAdd={onAdd} />
+      <div className="employee-list">
+        {departments.length === 0 ? (
+          <div>ไม่มีเกณฑ์การประเมิน</div>
+        ) : (
+          departments.map((dept, index) => (
+            <div key={index} className="employee-item">
+              {dept}
+              <button className="delete-btn" onClick={() => onDelete(dept)}>ลบ</button>
+            </div>
+          ))
+        )}
       </div>
-    );
-  }
-  
-  function SecondPage({ onSave, onCancel, newDepartment, setNewDepartment }) {
-    return (
-      <div className="page second-page">
-        <h2>เพิ่มเกณฑ์การประเมิน</h2>
-        <input
-          type="text"
-          value={newDepartment}
-          onChange={(e) => setNewDepartment(e.target.value)}
-          placeholder="ใส่ชื่อแผนก"
-        />
-        <div className="button-group">
-          <button className="save-button" onClick={() => onSave(newDepartment)}>บันทึก</button>
-          <button className="cancel-button" onClick={onCancel}>ยกเลิก</button>
-        </div>
+    </div>
+  );
+}
+
+const Header = () => (
+  <header className="header">
+    <h1>นายเองก็เป็นได้นะ HRน่ะ</h1>
+    <div className="profile-circle"></div>
+  </header>
+);
+
+const SearchBar = ({ onAdd }) => (
+  <div className="search-bar">
+    <input type="text" placeholder="แผนก" />
+    <button className="search-btn">&#128269;</button>
+    <button className="sort-btn">&#8645;</button>
+    <button className="add-btn" onClick={onAdd}>+</button>
+  </div>
+);
+
+function SecondPage({ onSave, onCancel, newDepartment, setNewDepartment }) {
+  return (
+    <div className="page second-page">
+      <h2>เพิ่มเกณฑ์การประเมิน</h2>
+      <input
+        type="text"
+        value={newDepartment}
+        onChange={(e) => setNewDepartment(e.target.value)}
+        placeholder="ใส่ชื่อแผนก"
+      />
+      <div className="button-group">
+        <button className="save-button" onClick={() => onSave(newDepartment)}>บันทึก</button>
+        <button className="cancel-button" onClick={onCancel}>ยกเลิก</button>
       </div>
-    );
-  }
-  
-  function ThirdPage({ department, onDelete, onReturn }) {
-    return (
-      <div className="page third-page">
-        <h2>ลบเกณฑ์การประเมิน</h2>
-        <p>คุณต้องการลบเกณฑ์: <strong>{department}</strong> ใช่ไหม?</p>
-        <div className="button-group">
-          <button className="delete-button" onClick={onDelete}>ลบ</button>
-          <button className="return-button" onClick={onReturn}>กลับไปหน้าแรก</button>
-        </div>
+    </div>
+  );
+}
+
+function ThirdPage({ department, onDelete, onReturn }) {
+  return (
+    <div className="page third-page">
+      <h2>ลบเกณฑ์การประเมิน</h2>
+      <p>คุณต้องการลบเกณฑ์: <strong>{department}</strong> ใช่ไหม?</p>
+      <div className="button-group">
+        <button className="delete-button" onClick={onDelete}>ลบ</button>
+        <button className="return-button" onClick={onReturn}>กลับไปหน้าแรก</button>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
 export default Department;

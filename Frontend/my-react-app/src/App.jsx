@@ -7,8 +7,8 @@ import ChiefPage from './chief';
 import HrData from './hrdata';
 import EmDetail from './emdetail';
 import HrEvaluation from './hrevaluation';
-import HrCriteria from './hrcriteria';
 import MoEmdetail from './moemdetail';
+import Department from './department';
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
           <Route path="/hr/hrdata" element={<HrData />} />
           <Route path="/hr/hrdata/employee/:id" element={<EmDetail />} />
           <Route path="/hr/evaluation" element={<HrEvaluation />} />
-          <Route path="/hr/evaluation/criteria" element={<HrCriteria />} />
+          <Route path="/hr/evaluation/criteria" element={<Department />} />
           <Route path="/hr/hrdata/employee/:id/moemdetail" element={<MoEmdetail />} />
         </Routes>
       </div>
