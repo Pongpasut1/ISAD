@@ -3,6 +3,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.util.Map;
 
 @Setter
@@ -42,6 +43,9 @@ public class EvaluationResults {
     private String comment;
 
     private Map<String, Integer> scores;
+
+    @Getter
+    private LocalDate evaluationDate;
 
     public String getEmp_id() {
         return empId;

@@ -121,6 +121,7 @@ public class HrController {
                 evaluationResults.setAbility_score(abilityScore);
                 evaluationResults.setAttendance_score(attendanceScore);
                 evaluationResults.setComment(evaluationRequest.getComment());
+                evaluationResults.setEvaluationDate(endDate);
 
                 // บันทึกผลการประเมิน
                 evaluationResultsService.createEvaluationResult(evaluationResults);

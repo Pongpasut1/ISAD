@@ -1,51 +1,80 @@
 [{
   "_id": {
-    "$numberLong": "15"
+    "$numberLong": "22"
   },
   "empId": "EMP5",
   "criteriaId": "CRIT001",
-  "KPI_score": 80,
-  "ability_score": 80,
+  "KPI_score": 70,
+  "ability_score": 60.000003814697266,
   "attendance_score": 100,
-  "total_score": 84,
+  "total_score": 73,
   "comment": "Great performance",
   "scores": {
-    "CRIT_KPI1": 8,
-    "CRIT_ABILITY1": 8
+    "CRIT_KPI1": 7,
+    "CRIT_ABILITY1": 6
+  },
+  "evaluationDate": {
+    "$date": "2023-10-10T17:00:00.000Z"
   },
   "_class": "com.example.demo.model.SelfEvaluation"
 },
 {
   "_id": {
-    "$numberLong": "17"
+    "$numberLong": "23"
   },
   "empId": "EMP6",
   "criteriaId": "CRIT002",
   "KPI_score": 70,
-  "ability_score": 80,
+  "ability_score": 60.000003814697266,
   "attendance_score": 50,
-  "total_score": 69,
+  "total_score": 63,
   "comment": "Great performance",
   "scores": {
     "CRIT_KPI1": 7,
-    "CRIT_ABILITY1": 8
+    "CRIT_ABILITY1": 6
+  },
+  "evaluationDate": {
+    "$date": "2023-10-10T17:00:00.000Z"
   },
   "_class": "com.example.demo.model.SelfEvaluation"
 },
 {
   "_id": {
-    "$numberLong": "19"
+    "$numberLong": "25"
+  },
+  "empId": "EMP6",
+  "criteriaId": "CRIT002",
+  "KPI_score": 80,
+  "ability_score": 90,
+  "attendance_score": 100,
+  "total_score": 87,
+  "comment": "Great performance",
+  "scores": {
+    "CRIT_KPI1": 8,
+    "CRIT_ABILITY1": 9
+  },
+  "evaluationDate": {
+    "$date": "2023-10-20T17:00:00.000Z"
+  },
+  "_class": "com.example.demo.model.SelfEvaluation"
+},
+{
+  "_id": {
+    "$numberLong": "26"
   },
   "empId": "EMP7",
   "criteriaId": "CRIT002",
-  "KPI_score": 60.000003814697266,
-  "ability_score": 50,
+  "KPI_score": 90,
+  "ability_score": 90,
   "attendance_score": 50,
-  "total_score": 55,
+  "total_score": 82,
   "comment": "Great performance",
   "scores": {
-    "CRIT_KPI1": 6,
-    "CRIT_ABILITY1": 5
+    "CRIT_KPI1": 9,
+    "CRIT_ABILITY1": 9
+  },
+  "evaluationDate": {
+    "$date": "2023-10-10T17:00:00.000Z"
   },
   "_class": "com.example.demo.model.SelfEvaluation"
 }]

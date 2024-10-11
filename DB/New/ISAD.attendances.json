@@ -583,4 +583,400 @@
   "isLeave": false,
   "leaveReason": "",
   "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "670949dc0328e26328af1076"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-10T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-11T00:30:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-11T10:30:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094a110328e26328af1077"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-11T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-12T00:35:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-12T10:40:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094a6f0328e26328af1078"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-12T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-13T01:35:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-13T11:40:00.000Z"
+  },
+  "isLate": true,
+  "lateMinutes": 5,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094a930328e26328af1079"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-13T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-14T00:25:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-14T10:20:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094af70328e26328af107a"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-14T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-15T00:25:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-15T10:20:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094b9c0328e26328af107b"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-15T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-16T00:35:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-16T10:40:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094bfc0328e26328af107c"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-16T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-17T00:25:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-17T10:43:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094c3a0328e26328af107d"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-17T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-18T00:35:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-18T10:36:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094c810328e26328af107e"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-18T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-19T00:58:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-19T10:51:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094c9e0328e26328af107f"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-19T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-20T00:49:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-20T10:41:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094dd10328e26328af1080"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-20T17:00:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": true,
+  "leaveReason": "sickLeave",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094e040328e26328af1081"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-21T17:00:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": true,
+  "leaveReason": "sickLeave",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094e2e0328e26328af1082"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-22T17:00:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": true,
+  "leaveReason": "sickLeave",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094e560328e26328af1083"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-23T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-24T00:29:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-24T10:51:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094e770328e26328af1084"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-24T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-25T00:34:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-25T10:47:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094ef40328e26328af1085"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-25T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-26T00:24:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-26T10:17:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094f180328e26328af1086"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-26T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-27T00:05:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-27T10:18:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094f3b0328e26328af1087"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-27T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-28T01:14:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-28T11:20:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094f590328e26328af1088"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-28T17:00:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": true,
+  "leaveReason": "sickLeave",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094fa10328e26328af1089"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-29T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-30T00:15:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-30T10:20:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
+},
+{
+  "_id": {
+    "$oid": "67094fb50328e26328af108a"
+  },
+  "employeeId": "EMP6",
+  "date": {
+    "$date": "2023-10-30T17:00:00.000Z"
+  },
+  "checkInTime": {
+    "$date": "2023-10-31T00:39:00.000Z"
+  },
+  "checkOutTime": {
+    "$date": "2023-10-31T10:40:00.000Z"
+  },
+  "isLate": false,
+  "lateMinutes": 0,
+  "isLeave": false,
+  "leaveReason": "",
+  "_class": "com.example.demo.model.Attendance"
 }]

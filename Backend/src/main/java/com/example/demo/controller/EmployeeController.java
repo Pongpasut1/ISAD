@@ -162,6 +162,7 @@ public class EmployeeController {
                 selfEvaluation.setKPI_score(kpiScore);
                 selfEvaluation.setAbility_score(abilityScore);
                 selfEvaluation.setAttendance_score(attendanceScore); // ถ้ามี
+                selfEvaluation.setEvaluationDate(endDate);
 
                 SelfEvaluation savedEvaluation = selfEvaluationService.saveSelfEvaluation(selfEvaluation);
 

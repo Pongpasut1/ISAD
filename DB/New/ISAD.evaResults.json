@@ -1,6 +1,6 @@
 [{
   "_id": {
-    "$numberLong": "16"
+    "$numberLong": "23"
   },
   "empId": "EMP5",
   "criteriaId": "CRIT001",
@@ -13,39 +13,88 @@
     "CRIT_KPI1": 9,
     "CRIT_ABILITY1": 8
   },
+  "evaluationDate": {
+    "$date": "2023-10-10T17:00:00.000Z"
+  },
   "_class": "com.example.demo.model.EvaluationResults"
 },
 {
   "_id": {
-    "$numberLong": "17"
+    "$numberLong": "24"
   },
   "empId": "EMP6",
   "criteriaId": "CRIT002",
   "KPI_score": 90,
-  "ability_score": 80,
+  "ability_score": 90,
   "attendance_score": 50,
-  "total_score": 79,
+  "total_score": 82,
   "comment": "Great performance",
   "scores": {
     "CRIT_KPI1": 9,
-    "CRIT_ABILITY1": 8
+    "CRIT_ABILITY1": 9
+  },
+  "evaluationDate": {
+    "$date": "2023-10-10T17:00:00.000Z"
   },
   "_class": "com.example.demo.model.EvaluationResults"
 },
 {
   "_id": {
-    "$numberLong": "20"
+    "$numberLong": "25"
+  },
+  "empId": "EMP6",
+  "criteriaId": "CRIT002",
+  "KPI_score": 90,
+  "ability_score": 90,
+  "attendance_score": 100,
+  "total_score": 92,
+  "comment": "Great performance",
+  "scores": {
+    "CRIT_KPI1": 9,
+    "CRIT_ABILITY1": 9
+  },
+  "evaluationDate": {
+    "$date": "2023-10-20T17:00:00.000Z"
+  },
+  "_class": "com.example.demo.model.EvaluationResults"
+},
+{
+  "_id": {
+    "$numberLong": "26"
+  },
+  "empId": "EMP6",
+  "criteriaId": "CRIT002",
+  "KPI_score": 90,
+  "ability_score": 90,
+  "attendance_score": 100,
+  "total_score": 92,
+  "comment": "Great performance",
+  "scores": {
+    "CRIT_KPI1": 9,
+    "CRIT_ABILITY1": 9
+  },
+  "evaluationDate": {
+    "$date": "2023-10-30T17:00:00.000Z"
+  },
+  "_class": "com.example.demo.model.EvaluationResults"
+},
+{
+  "_id": {
+    "$numberLong": "27"
   },
   "empId": "EMP7",
   "criteriaId": "CRIT002",
-  "KPI_score": 50,
+  "KPI_score": 70,
   "ability_score": 60.000003814697266,
   "attendance_score": 50,
-  "total_score": 53,
+  "total_score": 63,
   "comment": "Great performance",
   "scores": {
-    "CRIT_KPI1": 5,
+    "CRIT_KPI1": 7,
     "CRIT_ABILITY1": 6
+  },
+  "evaluationDate": {
+    "$date": "2023-10-10T17:00:00.000Z"
   },
   "_class": "com.example.demo.model.EvaluationResults"
 }]
