@@ -55,3 +55,63 @@
 .delete-btn:hover {
   background-color: #cc0000; /* Darker red on hover */
 }
+
+.save-button {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+.save-button:hover {
+  background-color: #45a049;
+}
+
+.page-second-page, .department-details{
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  overflow-y: auto;
+  max-height: 100vh;
+  overflow-y: scroll;
+}
+
+.criteria-section {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #ffffff;
+  border: 3px solid #0504aa;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+
+.form-group label {
+  flex-basis: 30%;
+  font-weight: bold;
+  margin-right: 10px;
+  text-align: right;
+  color: #0504aa;
+}
+
+.form-group input {
+  flex-basis: 65%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #0504aa;
+  box-shadow: 0 0 5px #0504aa;
+}
+
