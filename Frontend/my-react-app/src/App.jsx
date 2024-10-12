@@ -9,6 +9,7 @@ import EmDetail from './emdetail';
 import HrEvaluation from './hrevaluation';
 import MoEmdetail from './moemdetail';
 import Department from './department';
+import Profile from './profile';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/employee" element={<EmployeePage />} />
           <Route path="/hr" element={<HrPage />} />
           <Route path="/chief" element={<ChiefPage />} />
+          <Route path="/employee/:id/profile" element={<Profile />} />
           <Route path="/hr/hrdata" element={<HrData />} />
           <Route path="/hr/hrdata/employee/:id" element={<EmDetail />} />
           <Route path="/hr/evaluation" element={<HrEvaluation />} />
@@ -27,7 +29,6 @@ function App() {
         </Routes>
       </div>
     </Router>
-
   );
 }
 
