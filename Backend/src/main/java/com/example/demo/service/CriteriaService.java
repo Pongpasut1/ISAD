@@ -6,6 +6,8 @@ import com.example.demo.repository.CriteriaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CriteriaService {
 
@@ -41,6 +43,10 @@ public class CriteriaService {
     // เมธอดเพื่อดึง Criteria ตาม criteriaId (ฟิลด์ criteriaId)
     public Criteria getCriteriaByCriteriaId(String criteriaId) {
         return criteriaRepo.findByCriteriaId(criteriaId);
+    }
+
+    public List<Criteria> getAllCriteria() {
+        return criteriaRepo.findAll();
     }
 
     // สามารถเพิ่มเมธอดอื่นๆ ตามความต้องการ

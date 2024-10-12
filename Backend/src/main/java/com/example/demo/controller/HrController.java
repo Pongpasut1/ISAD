@@ -160,5 +160,10 @@ public class HrController {
 
         return employeeEvaluations;
     }
+
+    @GetMapping("/getAllCriteria")
+    public List<Criteria> getAllCriteria() {
+        return criteriaService.getAllCriteria();
+    }
 }
 
