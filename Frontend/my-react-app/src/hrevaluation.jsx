@@ -13,9 +13,15 @@ const HrEvaluation = () => {
         <Link to="/hr/evaluation/criteria">
           <button className="button">เกณฑ์การประเมิน</button>
         </Link>
-        <button className="button">ประเมินพนักงาน</button>
-        <button className="button">ประเมินตัวเอง</button>
-        <button className="button">ผลการประเมิน</button>
+        <Link to="/hr/evaluation/evaluem">
+          <button className="button">ประเมินพนักงาน</button>
+        </Link>
+        <Link to="">
+          <button className="button">ประเมินตัวเอง</button>
+        </Link>
+        <Link to="/hr/evaluation/evaluem">
+          <button className="button">ผลการประเมิน</button>
+        </Link>
       </div>
     </div>
   );

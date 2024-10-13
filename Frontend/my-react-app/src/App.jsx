@@ -10,6 +10,7 @@ import HrEvaluation from './hrevaluation';
 import MoEmdetail from './moemdetail';
 import Department from './department';
 import Profile from './profile';
+import Evaluem from './evaluem'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/hr/evaluation" element={<HrEvaluation />} />
           <Route path="/hr/evaluation/criteria" element={<Department />} />
           <Route path="/hr/hrdata/employee/:id/moemdetail" element={<MoEmdetail />} />
+          <Route path="/hr/evaluation/evaluem" element={<Evaluem />} />
         </Routes>
       </div>
     </Router>
