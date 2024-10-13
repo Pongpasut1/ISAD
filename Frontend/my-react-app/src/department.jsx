@@ -24,6 +24,7 @@ function Department() {
   });
   const [deptToDelete, setDeptToDelete] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState(null); // New state for selected department
+  const [selectedCriteria, setSelectedCriteria] = useState(null);
 
   const handleAddDepartment = () => {
     const newDepartment = {
@@ -53,6 +54,25 @@ function Department() {
     setDepartments(departments.filter(dept => dept.id !== deptToDelete.id));
     setDeptToDelete('');
     setCurrentPage(1);
+  };
+
+  const fetchCriteriaDetails = (criteriaId) => {
+    fetch(`http://localhost:8081/hr/getCriteriaByID/${criteriaId}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setSelectedDepartment(data); // Set department details when selected
+        setCurrentPage(4); // Change to DepartmentDetails page
+      })
+      .catch((error) => console.error("Error fetching department details:", error));
+  };
+
+  const handleReturn = () => {
+    setSelectedCriteria(null);  // Clear selection when returning
   };
 
   const resetFormData = () => {
@@ -86,10 +106,7 @@ function Department() {
             setDeptToDelete(dept);
             setCurrentPage(3);
           }}
-          onSelectDepartment={(dept) => {
-            setSelectedDepartment(dept);
-            setCurrentPage(4);
-          }}
+          onSelectDepartment={fetchCriteriaDetails}
         />
       )}
       {currentPage === 2 && (
@@ -113,6 +130,7 @@ function Department() {
       {currentPage === 4 && selectedDepartment && (
         <DepartmentDetails department={selectedDepartment} onReturn={() => setCurrentPage(1)} />
       )}
+
     </div>
   );
 }
@@ -138,7 +156,7 @@ const HrCriteria = ({ onAdd, onDelete, onSelectDepartment }) => {
         ) : (
           criteria.map((criterion) => (
             <div key={criterion.criteriaId} className="employee-item">
-              <span onClick={() => onSelectDepartment(criterion)}>{criterion.description}</span>
+              <span onClick={() => onSelectDepartment(criterion.criteriaId)}>{criterion.criteriaId}</span>
               <button className="delete-btn" onClick={() => onDelete(criterion)}>ลบ</button>
             </div>
           ))
@@ -151,25 +169,32 @@ const HrCriteria = ({ onAdd, onDelete, onSelectDepartment }) => {
 const DepartmentDetails = ({ department, onReturn }) => {
   return (
     <div className="department-details">
-      <h2>รายละเอียดแผนก: {department.name}</h2>
-      <p><strong>ID:</strong> {department.id}</p>
-      <p><strong>ตำแหน่ง:</strong> {department.position}</p>
+      <h2>รายละเอียดแผนก: {department.department}</h2>
+      <p><strong>ID:</strong> {department.criteriaId}</p>
+      <p><strong>ตำแหน่ง:</strong> {department.role}</p>
       <p><strong>คำอธิบาย:</strong> {department.description}</p>
       <h3>เกณฑ์คะแนนการเข้างาน:</h3>
-      <p><strong>เวลาสาย:</strong> {department.late} นาที</p>
-      <p><strong>คะแนน:</strong> {department.lateScore}</p>
-      <p><strong>ลาป่วย:</strong> {department.sickLeave} ครั้ง</p>
-      <p><strong>คะแนน:</strong> {department.sickLeaveScore}</p>
-      <p><strong>ลากิจ:</strong> {department.personalLeave} ครั้ง</p>
-      <p><strong>คะแนน:</strong> {department.personalLeaveScore}</p>
-      <p><strong>น้ำหนักคะแนน:</strong> {department.scoreWeight}%</p>
+      <p><strong>เวลาสาย:</strong> {department.attendance_criteria.maxLateMinutes} นาที</p>
+      <p><strong>คะแนน:</strong> {department.attendance_criteria.maxLateScore}</p>
+      <p><strong>ลาป่วย:</strong> {department.attendance_criteria.maxSickLeaveDays} ครั้ง</p>
+      <p><strong>ลาพักร้อน:</strong> {department.attendance_criteria.maxVacationLeaveDays}</p>
+      <p><strong>ลากิจ:</strong> {department.attendance_criteria.maxPersonalLeaveDays} ครั้ง</p>
+      <p><strong>คะแนน:</strong> {department.attendance_criteria.maxLeaveScore}</p>
+      <p><strong>น้ำหนักคะแนน:</strong> {department.attendance_weight}%</p>
       <h3>เกณฑ์คะแนนการทำงาน:</h3>
-      <p><strong>ID:</strong> {department.criteriaId}</p>
-      <p><strong>คำอธิบาย:</strong> {department.criteria}</p>
-      <p><strong>ประเภทคะแนน:</strong> {department.scoreType}</p>
-      <p><strong>คะแนนเต็ม:</strong> {department.fullScore}</p>
-      <p><strong>น้ำหนัก:</strong> {department.weight}</p>
-
+      {department.evaluationCriteria && department.evaluationCriteria.length > 0 ? (
+        department.evaluationCriteria.map((criterion) => (
+          <div key={criterion.criterionId}>
+            <p><strong>ID:</strong> {criterion.criterionId}</p>
+            <p><strong>คำอธิบาย:</strong> {criterion.description}</p>
+            <p><strong>ประเภทคะแนน:</strong> {criterion.type}</p>
+            <p><strong>คะแนนเต็ม:</strong> {criterion.maxScore}</p>
+            <p><strong>น้ำหนักคะแนน:</strong> {criterion.weight} %</p>
+          </div>
+        ))
+      ) : (
+        <p>ไม่มีเกณฑ์คะแนนการทำงาน</p>
+      )}
       <button onClick={onReturn}>ย้อนกลับ</button>
     </div>
   );

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:5173/hr")
+@CrossOrigin(origins = "http://localhost:5174")
 @RestController
 @RequestMapping("/hr")
 public class HrController {
@@ -162,14 +162,14 @@ public class HrController {
         return employeeEvaluations;
     }
 
-    @CrossOrigin(origins = "http://localhost:5174")
+
     @GetMapping("/getAllCriteria")
     public List<Criteria> getAllCriteria() {
         return criteriaService.getAllCriteria();
     }
 
     @GetMapping("/getCriteriaByID/{criteriaId}")
-    public Criteria getAllCriteriaById(@PathVariable String criteriaId) {
+    public Criteria getCriteriaById(@PathVariable String criteriaId) {
         return criteriaService.getCriteriaByCriteriaId(criteriaId);
     }
 }
