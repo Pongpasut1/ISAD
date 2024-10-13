@@ -162,7 +162,7 @@ public class HrController {
         return employeeEvaluations;
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
+    @CrossOrigin(origins = "http://localhost:5174")
     @GetMapping("/getAllCriteria")
     public List<Criteria> getAllCriteria() {
         return criteriaService.getAllCriteria();
