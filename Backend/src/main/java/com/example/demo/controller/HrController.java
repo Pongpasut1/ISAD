@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:5173/hr/evaluation/criteria")
+@CrossOrigin(origins = "http://localhost:5173/hr")
 @RestController
 @RequestMapping("/hr")
 public class HrController {
@@ -162,6 +162,7 @@ public class HrController {
         return employeeEvaluations;
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping("/getAllCriteria")
     public List<Criteria> getAllCriteria() {
         return criteriaService.getAllCriteria();

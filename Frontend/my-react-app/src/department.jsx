@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './department.css';
 
 function Department() {
@@ -117,26 +117,36 @@ function Department() {
   );
 }
 
-const HrCriteria = ({ departments, onAdd, onDelete, onSelectDepartment }) => {
+const HrCriteria = ({ onAdd, onDelete, onSelectDepartment }) => {
+  const [criteria, setCriteria] = useState([]);
+
+  // Fetch the criteria list when the component is mounted
+  useEffect(() => {
+    fetch("http://localhost:8081/hr/getAllCriteria")
+      .then((response) => response.json())
+      .then((data) => setCriteria(data))
+      .catch((error) => console.error("Error fetching criteria:", error));
+  }, []);
+
   return (
     <div className='container'>
       <Header />
       <SearchBar onAdd={onAdd} />
       <div className="employee-list">
-        {departments.length === 0 ? (
-          <div>ไม่มีเกณฑ์การประเมิน</div>
+        {criteria.length === 0 ? (
+          <div></div>
         ) : (
-          departments.map((dept, index) => (
-            <div key={index} className="employee-item">
-              <span onClick={() => onSelectDepartment(dept)}>{dept.name}</span> {/* Clickable department name */}
-              <button className="delete-btn" onClick={() => onDelete(dept)}>ลบ</button>
+          criteria.map((criterion) => (
+            <div key={criterion.criteriaId} className="employee-item">
+              <span onClick={() => onSelectDepartment(criterion)}>{criterion.description}</span>
+              <button className="delete-btn" onClick={() => onDelete(criterion)}>ลบ</button>
             </div>
           ))
         )}
       </div>
     </div>
   );
-}
+};
 
 const DepartmentDetails = ({ department, onReturn }) => {
   return (
