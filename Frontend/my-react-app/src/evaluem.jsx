@@ -22,7 +22,7 @@ function Evaluem() {
                 <h2></h2>
                 <h2></h2>
                 <h2></h2>
-                <Link to="">
+                <Link to="/hr/evaluation/evaluem/evaluate">
                     <button className="button-inlist">ประเมิน</button>
                 </Link>
                 <Link to="">
