@@ -1,73 +1,225 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'; // หากใช้ axios
+import axios from 'axios';
 import './people.css';
 
 function Evaluate() {
     const [criteriaList, setCriteriaList] = useState([]);
-    const [error, setError] = useState(null); // เพิ่ม state สำหรับข้อผิดพลาด
-    const [inputs, setInputs] = useState({}); // เพิ่ม state สำหรับเก็บข้อมูล input
+    const [error, setError] = useState(null);
+    const [inputs, setInputs] = useState({
+        employeeId: '',
+        startDate: '',
+        endDate: '',
+        comment: '',
+        scores: {}
+    });
     const [showPopup, setShowPopup] = useState(false);
+    const [isLoading, setIsLoading] = useState(true); // เพิ่ม state สำหรับการโหลดข้อมูล
+    const [selectedCriteriaDetails, setSelectedCriteriaDetails] = useState(null);
 
     useEffect(() => {
         const fetchCriteria = async () => {
             try {
-                const response = await axios.get('http://localhost:8081/api/criteria'); // แก้ไข URL ให้ถูกต้อง
+                const response = await axios.get('http://localhost:8081/hr/getAllCriteria');
                 setCriteriaList(response.data);
+                console.log("Criteria List:", response.data);
             } catch (error) {
                 console.error("Error fetching criteria:", error);
-                setError("ไม่สามารถดึงข้อมูลเกณฑ์ได้ กรุณาลองใหม่ในภายหลัง."); // แสดงข้อความข้อผิดพลาด
+                setError("ไม่สามารถดึงข้อมูลเกณฑ์ได้ กรุณาลองใหม่ในภายหลัง.");
+            } finally {
+                setIsLoading(false);
             }
         };
 
         fetchCriteria();
     }, []);
 
-    const handleInputChange = (criteriaId, value) => {
+    const handleInputChange = (field, value) => {
         setInputs((prevInputs) => ({
             ...prevInputs,
-            [criteriaId]: value, // เก็บค่าที่พิมพ์ใน input
+            [field]: value,
         }));
     };
 
-    const onSave = async () => {
+    const handleScoreChange = (criterionId, value) => {
+        setInputs((prevInputs) => ({
+            ...prevInputs,
+            scores: {
+                ...prevInputs.scores,
+                [criterionId]: Number(value),
+            },
+        }));
+    };
+
+    const fetchCriteriaDetails = async (criteriaId) => {
+        if (!criteriaId) {
+            setSelectedCriteriaDetails(null);
+            return;
+        }
+
         try {
-            const response = await axios.post('http://localhost:8081/api/save-evaluation', inputs);
-            console.log("ส่งข้อมูลสำเร็จ:", response.data);
-            setShowPopup(true); // เปิด pop-up เมื่อบันทึกสำเร็จ
+            const response = await axios.get(`http://localhost:8081/hr/getCriteriaByID/${criteriaId}`);
+            setSelectedCriteriaDetails(response.data);
+            console.log("Selected Criteria Details:", response.data);
         } catch (error) {
-            console.error("Error sending data:", error);
-            alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล!"); // pop-up ข้อผิดพลาด
+            console.error("Error fetching criteria details:", error);
+            alert("เกิดข้อผิดพลาดในการดึงข้อมูลรายละเอียดเกณฑ์การประเมิน");
         }
     };
-    
-    const closePopup = () => {
-        setShowPopup(false); // ปิด pop-up
+
+    const handleCriteriaChange = (e) => {
+        const criteriaId = e.target.value;
+        handleInputChange('criteriaId', criteriaId);
+        fetchCriteriaDetails(criteriaId);
     };
-    
+
+    const onSave = async () => {
+        if (!inputs.employeeId || !inputs.startDate || !inputs.endDate || !inputs.criteriaId) {
+            alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+            return;
+        }
+
+        // ตรวจสอบว่าทุก EvaluationCriterion มีคะแนนที่เลือก
+        const selectedCriteria = criteriaList.find(c => c.criteriaId === inputs.criteriaId);
+        if (selectedCriteria) {
+            for (const criterion of selectedCriteria.evaluationCriteria) {
+                if (inputs.scores[criterion.criterionId] === undefined || inputs.scores[criterion.criterionId] === '') {
+                    alert(`กรุณาเลือกคะแนนสำหรับเกณฑ์: ${criterion.description}`);
+                    return;
+                }
+            }
+        } else {
+            alert("ไม่พบเกณฑ์การประเมินที่เลือก");
+            return;
+        }
+
+        const payload = {
+            employeeId: inputs.employeeId,
+            criteriaId: inputs.criteriaId, // ใช้ criteriaId ที่เลือกจาก dropdown
+            scores: inputs.scores,
+            startDate: inputs.startDate,
+            endDate: inputs.endDate,
+            comment: inputs.comment
+        };
+
+        try {
+            const response = await axios.post('http://localhost:8081/hr/evaluateEmployee', payload);
+            console.log("ส่งข้อมูลสำเร็จ:", response.data);
+            setShowPopup(true);
+        } catch (error) {
+            console.error("Error sending data:", error);
+            alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล!");
+        }
+    };
+
+    const closePopup = () => {
+        setShowPopup(false);
+    };
+
     return (
         <div className='container'>
             <Header />
-            <div>
-                {error && <p>{error}</p>}
-                {criteriaList.length > 0 ? (
-                    <ul>
-                        {criteriaList.map((criteria) => (
-                            <li key={criteria.criteriaId}>
-                                <p>ID: {criteria.criteriaId}</p>
-                                <p>ชื่อเกณฑ์: {criteria.criteria}</p>
-                                <input
-                                    type="text"
-                                    onChange={(e) => handleInputChange(criteria.criteriaId, e.target.value)}
-                                />
-                            </li>
-                        ))}
-                    </ul>
+            <div className="form-container">
+                {isLoading ? (
+                    <p>กำลังโหลดข้อมูล...</p>
                 ) : (
-                    <p>ยังไม่มีเกณฑ์</p>
+                    <>
+                        {error && <p className="error-message">{error}</p>}
+
+                        {/* ฟอร์มสำหรับกรอกข้อมูลพื้นฐาน */}
+                        <div className="form-group">
+                            <label>Employee ID:</label>
+                            <input
+                                type="text"
+                                value={inputs.employeeId}
+                                onChange={(e) => handleInputChange('employeeId', e.target.value)}
+                                placeholder="กรอก Employee ID"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Start Date:</label>
+                            <input
+                                type="date"
+                                value={inputs.startDate}
+                                onChange={(e) => handleInputChange('startDate', e.target.value)}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>End Date:</label>
+                            <input
+                                type="date"
+                                value={inputs.endDate}
+                                onChange={(e) => handleInputChange('endDate', e.target.value)}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Comment:</label>
+                            <textarea
+                                value={inputs.comment}
+                                onChange={(e) => handleInputChange('comment', e.target.value)}
+                                placeholder="กรอกความคิดเห็น"
+                            ></textarea>
+                        </div>
+
+                        {/* Dropdown สำหรับเลือกเกณฑ์การประเมิน */}
+                        <div className="form-group">
+                            <label>เลือกเกณฑ์การประเมิน:</label>
+                            <select
+                                value={inputs.criteriaId}
+                                onChange={handleCriteriaChange}
+                            >
+                                <option value="">เลือกเกณฑ์การประเมิน</option>
+                                {criteriaList.map((criteria) => (
+                                    <option key={criteria.criteriaId} value={criteria.criteriaId}>
+                                        {criteria.criteriaId} - {criteria.description}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        {/* แสดงรายละเอียดของเกณฑ์ที่เลือก */}
+                        {selectedCriteriaDetails && (
+                            <div className="criteria-details">
+                                <h3>รายละเอียดเกณฑ์การประเมิน:</h3>
+                                <p><strong>ID:</strong> {selectedCriteriaDetails.criteriaId}</p>
+                                <p><strong>ชื่อเกณฑ์:</strong> {selectedCriteriaDetails.description}</p>
+                                <p><strong>ประเภทคะแนน:</strong> {selectedCriteriaDetails.evaluationCriteria.map(c => c.type).join(", ")}</p>
+                                <p><strong>คะแนนสูงสุด:</strong> {selectedCriteriaDetails.evaluationCriteria.reduce((sum, c) => sum + c.maxScore, 0)}</p>
+                                <p><strong>น้ำหนักคะแนน:</strong> {selectedCriteriaDetails.KPI_weight}% KPI, {selectedCriteriaDetails.ability_weight}% ความสามารถ, {selectedCriteriaDetails.attendance_weight}% ขาด ลา มาสาย</p>
+                            </div>
+                        )}
+
+                        {/* ฟอร์มสำหรับกรอกคะแนนตามเกณฑ์การประเมินแต่ละตัว */}
+                        {selectedCriteriaDetails && (
+                            <div className="scores-container">
+                                <h2>กรอกคะแนน</h2>
+                                {selectedCriteriaDetails.evaluationCriteria.length > 0 ? (
+                                    selectedCriteriaDetails.evaluationCriteria.map((criterion) => (
+                                        <div key={criterion.criterionId} className="score-item">
+                                            <label className="score-label">{criterion.description}:</label>
+                                            <select
+                                                value={inputs.scores[criterion.criterionId] || ''}
+                                                onChange={(e) => handleScoreChange(criterion.criterionId, e.target.value)}
+                                                className="score-input"
+                                            >
+                                                <option value="">เลือกคะแนน</option>
+                                                {Array.from({ length: criterion.maxScore + 1 }, (_, i) => i).map((score) => (
+                                                    <option key={score} value={score}>
+                                                        {score}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <p>ยังไม่มีเกณฑ์การประเมินเพิ่มเติม</p>
+                                )}
+                            </div>
+                        )}
+                    </>
                 )}
             </div>
-            <button onClick={onSave}>ส่ง</button>
-    
+            <button className="submit-button" onClick={onSave}>ส่ง</button>
+
             {showPopup && (
                 <div className="popup">
                     <div className="popup-content">

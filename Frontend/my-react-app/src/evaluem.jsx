@@ -8,7 +8,7 @@ function Evaluem() {
         { id: 2, firstName: 'ก', lastName: 'ข', title: 'นาย' },
         { id: 3, firstName: 'ก', lastName: 'ข', title: 'นาย' }
       ]);
-    
+
     return (
         <div className='container'>
           <Header />
@@ -34,14 +34,14 @@ function Evaluem() {
         </div>
     );
 }
-    
+
 const Header = () => (
     <header className="header">
         <h1>นายเองก็เป็นได้นะ HRน่ะ</h1>
         <div className="profile-circle"></div>
     </header>
 );
-    
+
 const SearchBar = () => (
     <div className="search-bar">
         <input type="text" placeholder="รายชื่อพนักงาน" />
