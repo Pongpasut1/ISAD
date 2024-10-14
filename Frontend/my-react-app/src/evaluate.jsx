@@ -6,6 +6,7 @@ function Evaluate() {
     const [criteriaList, setCriteriaList] = useState([]);
     const [error, setError] = useState(null); // เพิ่ม state สำหรับข้อผิดพลาด
     const [inputs, setInputs] = useState({}); // เพิ่ม state สำหรับเก็บข้อมูล input
+    const [showPopup, setShowPopup] = useState(false);
 
     useEffect(() => {
         const fetchCriteria = async () => {
@@ -28,16 +29,26 @@ function Evaluate() {
         }));
     };
 
-    const onSave = () => {
-        console.log("ข้อมูลที่จะส่ง:", inputs); // สามารถเปลี่ยนเป็นการส่งข้อมูลไปยัง backend ได้
-        // คุณสามารถใช้ axios เพื่อส่งข้อมูลไปยัง backend ที่นี่
+    const onSave = async () => {
+        try {
+            const response = await axios.post('http://localhost:8081/api/save-evaluation', inputs);
+            console.log("ส่งข้อมูลสำเร็จ:", response.data);
+            setShowPopup(true); // เปิด pop-up เมื่อบันทึกสำเร็จ
+        } catch (error) {
+            console.error("Error sending data:", error);
+            alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล!"); // pop-up ข้อผิดพลาด
+        }
     };
-
+    
+    const closePopup = () => {
+        setShowPopup(false); // ปิด pop-up
+    };
+    
     return (
         <div className='container'>
             <Header />
             <div>
-                {error && <p>{error}</p>} {/* แสดงข้อความข้อผิดพลาด */}
+                {error && <p>{error}</p>}
                 {criteriaList.length > 0 ? (
                     <ul>
                         {criteriaList.map((criteria) => (
@@ -46,16 +57,25 @@ function Evaluate() {
                                 <p>ชื่อเกณฑ์: {criteria.criteria}</p>
                                 <input
                                     type="text"
-                                    onChange={(e) => handleInputChange(criteria.criteriaId, e.target.value)} // จัดการเมื่อมีการเปลี่ยนแปลง input
+                                    onChange={(e) => handleInputChange(criteria.criteriaId, e.target.value)}
                                 />
                             </li>
                         ))}
                     </ul>
                 ) : (
-                    <p>ยังไม่มีเกณฑ์</p> // แสดงข้อความหากไม่มีเกณฑ์
+                    <p>ยังไม่มีเกณฑ์</p>
                 )}
             </div>
             <button onClick={onSave}>ส่ง</button>
+    
+            {showPopup && (
+                <div className="popup">
+                    <div className="popup-content">
+                        <p>บันทึกข้อมูลสำเร็จ!</p>
+                        <button onClick={closePopup}>ตกลง</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
