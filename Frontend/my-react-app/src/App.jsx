@@ -1,3 +1,4 @@
+// App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './login';
@@ -10,13 +11,15 @@ import HrEvaluation from './hrevaluation';
 import MoEmdetail from './moemdetail';
 import Department from './department';
 import Profile from './profile';
-import Evaluem from './evaluem'
-import Evaluate from './evaluate'
+import Evaluem from './evaluem';
+import Evaluate from './evaluate';
+import EvaluateResult from './EvaluateResult'; // เพิ่ม EvaluateResult
+import EvaluateResultList from './EvaluateResultList';
 
 function App() {
   return (
     <Router>
-        <div>
+      <div>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/employee" element={<EmployeePage />} />
@@ -29,7 +32,10 @@ function App() {
           <Route path="/hr/evaluation/criteria" element={<Department />} />
           <Route path="/hr/hrdata/employee/:id/moemdetail" element={<MoEmdetail />} />
           <Route path="/hr/evaluation/evaluem" element={<Evaluem />} />
-          <Route path="/hr/evaluation/evaluem/evaluate" element={<Evaluate />} />
+          <Route path="/hr/evaluation/evaluem/evaluate/:empId" element={<Evaluate />} />
+          <Route path="/hr/evaluation/evaluem/result/:empId" element={<EvaluateResult />} />
+          <Route path="/hr/evaluation/evaluem/result" element={<EvaluateResultList />} />
+          {/* เพิ่ม Route สำหรับผลการประเมิน */}
         </Routes>
       </div>
     </Router>
@@ -37,4 +43,3 @@ function App() {
 }
 
 export default App;
-

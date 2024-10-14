@@ -58,4 +58,8 @@ public class EvaluationResultsService {
     public List<EvaluationResults> getAllEvaluationResultsSortedByTotalScoreDesc() {
         return evaluationResultsRepo.findAllByOrderByTotalScoreDesc();
     }
+
+    public List<EvaluationResults> getEvaluationResultsByEmpId(String empId) {
+        return evaluationResultsRepo.findByEmpId(empId);
+    }
 }

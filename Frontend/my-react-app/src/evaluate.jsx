@@ -1,19 +1,23 @@
+// Evaluate.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams, useNavigate } from 'react-router-dom';
 import './people.css';
 
 function Evaluate() {
+    const { empId } = useParams(); // ดึง empId จาก URL
+    const navigate = useNavigate();
     const [criteriaList, setCriteriaList] = useState([]);
     const [error, setError] = useState(null);
     const [inputs, setInputs] = useState({
-        employeeId: '',
+        employeeId: empId, // ตั้งค่า employeeId จาก empId
         startDate: '',
         endDate: '',
         comment: '',
         scores: {}
     });
     const [showPopup, setShowPopup] = useState(false);
-    const [isLoading, setIsLoading] = useState(true); // เพิ่ม state สำหรับการโหลดข้อมูล
+    const [isLoading, setIsLoading] = useState(true);
     const [selectedCriteriaDetails, setSelectedCriteriaDetails] = useState(null);
 
     useEffect(() => {
@@ -113,6 +117,7 @@ function Evaluate() {
 
     const closePopup = () => {
         setShowPopup(false);
+        navigate(`/hr/evaluation/evaluem/result/${empId}`); // นำทางไปยังหน้าผลการประเมินหลังจากบันทึกสำเร็จ
     };
 
     return (
@@ -125,14 +130,13 @@ function Evaluate() {
                     <>
                         {error && <p className="error-message">{error}</p>}
 
-                        {/* ฟอร์มสำหรับกรอกข้อมูลพื้นฐาน */}
+                        {/* แสดง Employee ID เป็น read-only */}
                         <div className="form-group">
                             <label>Employee ID:</label>
                             <input
                                 type="text"
-                                value={inputs.employeeId}
-                                onChange={(e) => handleInputChange('employeeId', e.target.value)}
-                                placeholder="กรอก Employee ID"
+                                value={empId}
+                                readOnly
                             />
                         </div>
                         <div className="form-group">
@@ -164,7 +168,7 @@ function Evaluate() {
                         <div className="form-group">
                             <label>เลือกเกณฑ์การประเมิน:</label>
                             <select
-                                value={inputs.criteriaId}
+                                value={inputs.criteriaId || ''}
                                 onChange={handleCriteriaChange}
                             >
                                 <option value="">เลือกเกณฑ์การประเมิน</option>

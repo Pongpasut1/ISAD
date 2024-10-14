@@ -140,9 +140,14 @@ public class HrController {
         return employeeService.getAllEmployees();
     }
 
-    @GetMapping("/getEmployee/{empId}")
-    public Employees getEmpById(@PathVariable String empId) {
+    @GetMapping("/employee/{empId}")
+    public Employees getEmployeeByEmpId(@PathVariable String empId) {
         return employeeService.getEmployeeByEmpId(empId);
+    }
+
+    @GetMapping("/evaluation/results/{empId}")
+    public List<EvaluationResults> getEvaluationResultsByEmpId(@PathVariable String empId) {
+        return evaluationResultsService.getEvaluationResultsByEmpId(empId);
     }
 
     @GetMapping("/employees/evaluations")
