@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:5174")
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/hr")
 public class HrController {
@@ -140,6 +140,11 @@ public class HrController {
         return employeeService.getAllEmployees();
     }
 
+    @GetMapping("/getEmployee/{empId}")
+    public Employees getEmpById(@PathVariable String empId) {
+        return employeeService.getEmployeeByEmpId(empId);
+    }
+
     @GetMapping("/employees/evaluations")
     public List<EmployeeEvaluationDTO> getEmployeesWithEvaluations() {
         List<EvaluationResults> evaluationResults = evaluationResultsService.getAllEvaluationResultsSortedByTotalScoreDesc();
@@ -172,6 +177,8 @@ public class HrController {
     public Criteria getCriteriaById(@PathVariable String criteriaId) {
         return criteriaService.getCriteriaByCriteriaId(criteriaId);
     }
+
+
 }
 
 
