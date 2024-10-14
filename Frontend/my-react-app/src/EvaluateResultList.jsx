@@ -55,7 +55,7 @@ function EvaluateResultList() {
                                 <td>{evaluation.name}</td>
                                 <td>{evaluation.surname}</td>
                                 <td>{evaluation.department}</td>
-                                <td>{evaluation.total_score}</td>
+                                <td>{evaluation.totalScore}</td>
                                 <td>
                                     <a href={`/hr/evaluation/evaluem/result/${evaluation.empId}`}>
                                         <button className="view-button">ดูผลการประเมิน</button>

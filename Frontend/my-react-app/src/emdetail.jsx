@@ -11,7 +11,7 @@ function EmDetail() {
 
   useEffect(() => {
     // เรียกใช้ API ดึงข้อมูลพนักงานตาม ID
-    fetch(`http://localhost:8081/hr/getEmployee/${id}`)
+    fetch(`http://localhost:8081/hr/employee/${id}`)
       .then(response => response.json())
       .then(data => setEmployee(data))
       .catch(error => console.error('Error fetching employee data:', error));

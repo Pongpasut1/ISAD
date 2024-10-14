@@ -188,7 +188,7 @@ function Evaluate() {
                                 <p><strong>ชื่อเกณฑ์:</strong> {selectedCriteriaDetails.description}</p>
                                 <p><strong>ประเภทคะแนน:</strong> {selectedCriteriaDetails.evaluationCriteria.map(c => c.type).join(", ")}</p>
                                 <p><strong>คะแนนสูงสุด:</strong> {selectedCriteriaDetails.evaluationCriteria.reduce((sum, c) => sum + c.maxScore, 0)}</p>
-                                <p><strong>น้ำหนักคะแนน:</strong> {selectedCriteriaDetails.KPI_weight}% KPI, {selectedCriteriaDetails.ability_weight}% ความสามารถ, {selectedCriteriaDetails.attendance_weight}% ขาด ลา มาสาย</p>
+                                <p><strong>น้ำหนักคะแนน:</strong> {selectedCriteriaDetails.kpi_weight}% KPI, {selectedCriteriaDetails.ability_weight}% ความสามารถ, {selectedCriteriaDetails.attendance_weight}% ขาด ลา มาสาย</p>
                             </div>
                         )}
 

@@ -5,22 +5,22 @@ function Department() {
   const [departments, setDepartments] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [formData, setFormData] = useState({
-    id: '',
-    department: '',
-    position: '',
-    description: '',
-    late: '',
-    lateScore: '',
-    sickLeave: '',
-    sickLeaveScore: '',
-    personalLeave: '',
-    personalLeaveScore: '',
-    scoreWeight: '',
     criteriaId: '',
-    criteria: '',
-    scoreType: '',
-    fullScore: '',
-    weight: '',
+    department: '',
+    role: '',
+    description: '',
+    KPI_weight: 0,
+    ability_weight: 0,
+    attendance_weight: 0,
+    attendance_criteria: {
+      maxLeaveScore: '',
+      maxLateScore: '',
+      maxSickLeaveDays: '',
+      maxPersonalLeaveDays: '',
+      maxVacationLeaveDays: '',
+      maxLateMinutes: '',
+    },
+    evaluationCriteria: [], // This will be an array of objects
   });
   const [deptToDelete, setDeptToDelete] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState(null); // New state for selected department
@@ -28,11 +28,11 @@ function Department() {
 
   const handleAddDepartment = () => {
     const newDepartment = {
-      id: formData.id,
+      criteriaId: formData.criteriaId,
       name: formData.department,
       position: formData.position,
       description: formData.description,
-      late: formData.late,
+      maxLateMinutes: formData.late,
       lateScore: formData.lateScore,
       sickLeave: formData.sickLeave,
       sickLeaveScore: formData.sickLeaveScore,
@@ -77,22 +77,22 @@ function Department() {
 
   const resetFormData = () => {
     setFormData({
-      id: '',
-      department: '',
-      position: '',
-      description: '',
-      late: '',
-      lateScore: '',
-      sickLeave: '',
-      sickLeaveScore: '',
-      personalLeave: '',
-      personalLeaveScore: '',
-      scoreWeight: '',
       criteriaId: '',
-      criteria: '',
-      scoreType: '',
-      fullScore: '',
-      weight: '',
+      department: '',
+      role: '', // ใช้ 'role' แทน 'position'
+      description: '',
+      KPI_weight: 0,
+      ability_weight: 0,
+      attendance_weight: 0,
+      attendance_criteria: {
+        maxLeaveScore: '',
+        maxLateScore: '',
+        maxSickLeaveDays: '',
+        maxPersonalLeaveDays: '',
+        maxVacationLeaveDays: '',
+        maxLateMinutes: '',
+      },
+      evaluationCriteria: [], // เป็น array ของ objects
     });
   };
 
@@ -209,7 +209,7 @@ const Header = () => (
 
 const SearchBar = ({ onAdd }) => (
   <div className="search-bar">
-    <input type="text" placeholder="แผนก" />
+    <input type="text" placeholder="เกณฑ์การประเมิน" />
     <button className="search-btn">&#128269;</button>
     <button className="sort-btn">&#8645;</button>
     <button className="add-btn" onClick={onAdd}>+</button>
@@ -217,32 +217,79 @@ const SearchBar = ({ onAdd }) => (
 );
 
 function SecondPage({ onSave, onCancel, formData, setFormData }) {
-  const [criteriaList, setCriteriaList] = useState([]);
-  
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const handleAttendanceChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      attendanceCriteria: {
+        ...prevFormData.attendanceCriteria,
+        [name]: value,
+      }
+    }));
   };
 
   const handleAddCriteria = () => {
-    const newCriteria = {
-      criteriaId: formData.criteriaId,
-      criteria: formData.criteria,
-      scoreType: formData.scoreType,
-      fullScore: formData.fullScore,
-      weight: formData.weight,
+    const newCriterion = {
+      criterionId: formData.criterionId,
+      descriptions: formData.descriptions,
+      maxScores: formData.maxScores,
+      weights: formData.weights,
+      types: formData.types, // "KPI", "Ability", etc.
     };
 
-    setCriteriaList([...criteriaList, newCriteria]);
-
-    setFormData({
-      ...formData,
-      criteriaId: '',
-      criteria: '',
-      scoreType: '',
-      fullScore: '',
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      evaluationCriteria: [...prevFormData.evaluationCriteria, newCriterion],
+      criterionId: '',
+      description: '',
+      maxScore: '',
       weight: '',
-    });
+      type: '',
+    }));
+  };
+
+  const handleSaveCriteria = () => {
+    const criteriaData = {
+      criteriaId: formData.criteriaId,
+      description: formData.description,
+      department: formData.department,
+      role: formData.position,
+      KPI_weight: formData.KPI_weight,
+      ability_weight: formData.ability_weight,
+      attendance_weight: formData.attendance_weight,
+      attendance_criteria: {
+        maxLateMinutes: formData.attendance_criteria.maxLeaveScore,
+        maxLateScore: formData.attendance_criteria.maxLateScore,
+        maxSickLeaveDays: formData.attendance_criteria.maxSickLeaveDays,
+        maxVacationLeaveDays: formData.attendance_criteria.maxVacationLeaveDays,
+        maxPersonalLeaveDays: formData.attendance_criteria.maxPersonalLeaveDays,
+        maxLeaveScore: formData.attendance_criteria.maxLeaveScore,
+      },
+      evaluationCriteria: formData.evaluationCriteria,
+    };
+
+    fetch('http://localhost:8081/hr/setCriteria', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(criteriaData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Criteria saved successfully:', data);
+      })
+      .catch((error) => {
+        console.error('Error saving criteria:', error);
+      });
   };
 
   return (
@@ -252,8 +299,8 @@ function SecondPage({ onSave, onCancel, formData, setFormData }) {
         <label>id เกณฑ์: </label>
         <input
           type="text"
-          name="id"
-          value={formData.id}
+          name="criteriaId"
+          value={formData.criteriaId || ''}
           onChange={handleChange}
           placeholder="ใส่ id"
         />
@@ -271,8 +318,8 @@ function SecondPage({ onSave, onCancel, formData, setFormData }) {
         <label>ตำแหน่ง: </label>
         <input
           type="text"
-          name="position"
-          value={formData.position}
+          name="role"
+          value={formData.role || ''}
           onChange={handleChange}
           placeholder="ใส่ตำแหน่ง"
         />
@@ -296,16 +343,16 @@ function SecondPage({ onSave, onCancel, formData, setFormData }) {
           <input
             type="text"
             name="late"
-            value={formData.late}
-            onChange={handleChange}
+            value={formData.attendance_criteria.maxLateMinutes}
+            onChange={handleAttendanceChange}
             placeholder="ใส่ค่า"
           />
           <label>คะแนน: </label>
           <input
             type="text"
             name="lateScore"
-            value={formData.lateScore}
-            onChange={handleChange}
+            value={formData.attendance_criteria.maxLateScore}
+            onChange={handleAttendanceChange}
             placeholder="ใส่คะแนน"
           />
         </div>
@@ -315,17 +362,17 @@ function SecondPage({ onSave, onCancel, formData, setFormData }) {
           <input
             type="text"
             name="sickLeave"
-            value={formData.sickLeave}
+            value={formData.maxSickLeaveDays}
             onChange={handleChange}
             placeholder="ใส่ค่า"
           />
           <label>คะแนน: </label>
           <input
             type="text"
-            name="sickLeaveScore"
-            value={formData.sickLeaveScore}
+            name="vacationLeaveDays"
+            value={formData.maxVacationLeaveDays}
             onChange={handleChange}
-            placeholder="ใส่คะแนน"
+            placeholder="ใส่ค่า"
           />
         </div>
 
@@ -334,15 +381,15 @@ function SecondPage({ onSave, onCancel, formData, setFormData }) {
           <input
             type="text"
             name="personalLeave"
-            value={formData.personalLeave}
+            value={formData.maxPersonalLeaveDays}
             onChange={handleChange}
             placeholder="ใส่ค่า"
           />
-          <label>คะแนน: </label>
+          <label>คะแนนการลารวม: </label>
           <input
             type="text"
-            name="personalLeaveScore"
-            value={formData.personalLeaveScore}
+            name="leaveScore"
+            value={formData.maxLeaveScore}
             onChange={handleChange}
             placeholder="ใส่คะแนน"
           />
@@ -352,8 +399,8 @@ function SecondPage({ onSave, onCancel, formData, setFormData }) {
           <label>น้ำหนักคะแนน (%): </label>
           <input
             type="text"
-            name="scoreWeight"
-            value={formData.scoreWeight}
+            name="attendance_weight"
+            value={formData.attendance_weight}
             onChange={handleChange}
             placeholder="ใส่ค่า"
           />
@@ -369,8 +416,8 @@ function SecondPage({ onSave, onCancel, formData, setFormData }) {
           <label>id:</label>
           <input
             type="text"
-            name="criteriaId"
-            value={formData.criteriaId}
+            name="criterionId"
+            value={formData.criterionId || ''}
             onChange={handleChange}
             placeholder="ใส่ id"
           />
@@ -380,8 +427,8 @@ function SecondPage({ onSave, onCancel, formData, setFormData }) {
           <label>ชื่อเกณฑ์:</label>
           <input
             type="text"
-            name="criteria"
-            value={formData.criteria}
+            name="descriptions"
+            value={formData.descriptions|| ''}
             onChange={handleChange}
             placeholder="ใส่ชื่อเกณฑ์"
           />
@@ -392,9 +439,9 @@ function SecondPage({ onSave, onCancel, formData, setFormData }) {
           <label>
             <input
               type="radio"
-              name="scoreType"
+              name="types"
               value="KPI"
-              checked={formData.scoreType === 'KPI'}
+              checked={formData.types === 'KPI'|| ''}
               onChange={handleChange}
             />
             KPI
@@ -402,9 +449,9 @@ function SecondPage({ onSave, onCancel, formData, setFormData }) {
           <label>
             <input
               type="radio"
-              name="scoreType"
+              name="types"
               value="คะแนนความสามารถ"
-              checked={formData.scoreType === 'คะแนนความสามารถ'}
+              checked={formData.types === 'คะแนนความสามารถ'|| ''}
               onChange={handleChange}
             />
             คะแนนความสามารถ
@@ -416,8 +463,8 @@ function SecondPage({ onSave, onCancel, formData, setFormData }) {
           <label>คะแนนสูงสุด:</label>
           <input
             type="text"
-            name="fullScore"
-            value={formData.fullScore}
+            name="maxScores"
+            value={formData.maxScores || ''}
             onChange={handleChange}
             placeholder="ใส่คะแนนสูงสุด"
           />
@@ -427,8 +474,8 @@ function SecondPage({ onSave, onCancel, formData, setFormData }) {
           <label>น้ำหนักคะแนน(%):</label>
           <input
             type="text"
-            name="weight"
-            value={formData.weight}
+            name="weights"
+            value={formData.weights || ''}
             onChange={handleChange}
             placeholder="ใส่น้ำหนัก"
           />
@@ -439,15 +486,15 @@ function SecondPage({ onSave, onCancel, formData, setFormData }) {
 
       <div className="added-criteria">
         <h4>เกณฑ์ที่เพิ่มแล้ว:</h4>
-        {criteriaList.length > 0 ? (
+        {formData.evaluationCriteria.length > 0 ? (
           <ul>
-            {criteriaList.map((criteria, index) => (
+            {formData.evaluationCriteria.map((criteria, index) => (
               <li key={index}>
-                <p>ID: {criteria.criteriaId}</p>
-                <p>ชื่อเกณฑ์: {criteria.criteria}</p>
-                <p>ประเภทคะแนน: {criteria.scoreType}</p>
-                <p>คะแนนสูงสุด: {criteria.fullScore}</p>
-                <p>น้ำหนักคะแนน: {criteria.weight}</p>
+                <p>ID: {criteria.criterionId}</p>
+                <p>ชื่อเกณฑ์: {criteria.descriptions}</p>
+                <p>ประเภทคะแนน: {criteria.types}</p>
+                <p>คะแนนสูงสุด: {criteria.maxScores}</p>
+                <p>น้ำหนักคะแนน: {criteria.weights}</p>
               </li>
             ))}
           </ul>
@@ -457,13 +504,12 @@ function SecondPage({ onSave, onCancel, formData, setFormData }) {
       </div>
 
       <div className="button-group">
-        <button onClick={onSave}>บันทึก</button>
+        <button onClick={handleSaveCriteria}>บันทึก</button>
         <button onClick={onCancel}>ยกเลิก</button>
       </div>
     </div>
   );
 }
-
 function ThirdPage({ department, onDelete, onReturn }) {
   return (
     <div>
