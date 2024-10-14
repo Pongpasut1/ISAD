@@ -1,29 +1,48 @@
 /* evaluateResultList.css */
 
-.evaluate-result-list-container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: #f9f9f9;
-    border-radius: 8px;
+/* Container styling */
+.container {
+    max-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff; /* เพิ่มพื้นหลัง */
+    box-sizing: border-box;
 }
 
+/* Header section */
 .header {
+    width: 100%;
+    background-color: #0504aa; /* สีพื้นหลัง */
+    color: white;
     display: flex;
     justify-content: space-between;
-    align-items: top;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
 }
 
+/* Title styling */
 .header h1 {
+    color: #ffffff;
+    margin: 0;
     font-size: 24px;
-    color: #333;
 }
+
+.h2 {
+    color: #0504aa; /* สีข้อความ */
+}
+
 
 .profile-circle {
     width: 40px;
     height: 40px;
     background-color: #007bff;
     border-radius: 50%;
+}
+.table-container {
+    width: 80%;
 }
 
 table {

@@ -19,7 +19,7 @@ const HrEvaluation = () => {
         <Link to="">
           <button className="button">ประเมินตัวเอง</button>
         </Link>
-        <Link to="/hr/evaluation/evaluem">
+        <Link to="/hr/evaluation/evaluem/result">
           <button className="button">ผลการประเมิน</button>
         </Link>
       </div>

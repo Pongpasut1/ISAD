@@ -33,37 +33,39 @@ function EvaluateResultList() {
     }
 
     return (
-        <div className="evaluate-result-list-container">
+        <div className="container">
             <Header />
-            <h1>ผลการประเมินพนักงานทั้งหมด</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Employee ID</th>
-                        <th>Name</th>
-                        <th>Surname</th>
-                        <th>Department</th>
-                        <th>Total Score</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {employeeEvaluations.map((evaluation, index) => (
-                        <tr key={index}>
-                            <td>{evaluation.empId}</td>
-                            <td>{evaluation.name}</td>
-                            <td>{evaluation.surname}</td>
-                            <td>{evaluation.department}</td>
-                            <td>{evaluation.total_score}</td>
-                            <td>
-                                <a href={`/hr/evaluation/evaluem/result/${evaluation.empId}`}>
-                                    <button className="view-button">ดูผลการประเมิน</button>
-                                </a>
-                            </td>
+            <h2>ผลการประเมินพนักงานทั้งหมด</h2>
+            <div className="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Department</th>
+                            <th>Total Score</th>
+                            <th>Actions</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {employeeEvaluations.map((evaluation, index) => (
+                            <tr key={index}>
+                                <td>{evaluation.empId}</td>
+                                <td>{evaluation.name}</td>
+                                <td>{evaluation.surname}</td>
+                                <td>{evaluation.department}</td>
+                                <td>{evaluation.total_score}</td>
+                                <td>
+                                    <a href={`/hr/evaluation/evaluem/result/${evaluation.empId}`}>
+                                        <button className="view-button">ดูผลการประเมิน</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 }

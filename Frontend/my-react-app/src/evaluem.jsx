@@ -35,9 +35,6 @@ function Evaluem() {
                             <Link to={`/hr/evaluation/evaluem/evaluate/${employee.empId}`}>
                                 <button className="button-inlist">ประเมิน</button>
                             </Link>
-                            <Link to={`/hr/evaluation/evaluem/result/${employee.empId}`}>
-                                <button className="button-inlist">ผลการประเมิน</button>
-                            </Link>
                         </div>
                     </div>
                 ))}
