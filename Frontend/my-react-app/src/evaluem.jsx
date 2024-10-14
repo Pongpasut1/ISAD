@@ -27,7 +27,7 @@ function Evaluem() {
                 {employees.map(employee => (
                     <div key={employee.empId} className="employee-item">
                         <h2 className="employee-name">
-                            <Link to={`/employee/${employee.empId}`}>
+                            <Link to={`/hr/hrdata/employee/${employee.empId}`}>
                                 {employee.name} {employee.surname}
                             </Link>
                         </h2>
