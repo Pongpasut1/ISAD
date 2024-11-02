@@ -30,9 +30,6 @@ public class Criteria {
     private String description;
 
     @Setter
-    private String[] articlesId;
-
-    @Setter
     private String department; //ของแผนกไหน
 
     @Setter

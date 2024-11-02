@@ -107,8 +107,7 @@ function MoEmDetail() {
             <input
               type="text"
               name="id"
-              value={employee.id || ""}
-              onChange={(e) => setEmployee({ ...employee, id: e.target.value })} 
+              value={employee.id || ""}readonly
             />
             <label>คำนำหน้าชื่อ</label>
             <input
@@ -209,8 +208,7 @@ function MoEmDetail() {
             <input
               type="text"
               name="empId"
-              value={employee.empId || ""}
-              onChange={(e) => setEmployee({ ...employee, empId: e.target.value })} 
+              value={employee.empId || ""} readonly
             />
           </div>
           

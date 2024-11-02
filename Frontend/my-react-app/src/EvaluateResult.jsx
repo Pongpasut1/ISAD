@@ -47,10 +47,10 @@ function EvaluateResult() {
                     <div key={index} className="evaluation-item">
                         <h2>การประเมินครั้งที่ {index + 1}</h2>
                         <p><strong>วันที่ประเมิน:</strong> {new Date(evaluation.evaluationDate).toLocaleDateString()}</p>
-                        <p><strong>Total Score:</strong> {evaluation.total_score}</p>
-                        <p><strong>KPI Score:</strong> {evaluation.kpi_score}</p>
-                        <p><strong>Ability Score:</strong> {evaluation.ability_score}</p>
-                        <p><strong>Attendance Score:</strong> {evaluation.attendance_score}</p>
+                        <p><strong>Total Score:</strong> {evaluation.total_score}%</p>
+                        <p><strong>KPI Score:</strong> {evaluation.kpi_score}%</p>
+                        <p><strong>Ability Score:</strong> {evaluation.ability_score}%</p>
+                        <p><strong>Attendance Score:</strong> {evaluation.attendance_score}%</p>
                         <p><strong>Comment:</strong> {evaluation.comment}</p>
                         {/* คุณสามารถเพิ่มข้อมูลอื่นๆ ตามที่ต้องการ */}
                     </div>
